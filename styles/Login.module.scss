@@ -1,0 +1,49 @@
+.container {
+  height: calc(100vh - 4.2rem);
+  width: 100%;
+  padding: 0 2rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  form {
+    width: 100%;
+  }
+}
+
+.formButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 3rem;
+
+  p {
+    color: var(--orange-900);
+  }
+
+  button {
+    background-color: var(--orange-500);
+    width: 48%;
+  }
+}
+
+.image {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .container {
+    padding: 0 10rem;
+  
+    form {
+      width: 40%;
+    }
+  }
+
+  .image {
+    display: block;
+  }
+}
+

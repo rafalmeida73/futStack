@@ -1,0 +1,12 @@
+.container{
+  max-height: 4.2rem;
+
+  nav{
+    background-color: var(--white);
+    color: var(--black);
+
+    .sidenav-trigger{
+      color: #000;
+    }
+  }
+}
