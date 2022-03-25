@@ -1,5 +1,5 @@
 import { InputHTMLAttributes, useState } from 'react';
-import { FieldValues, UseFormRegister } from 'react-hook-form';
+import { UseFormRegister } from 'react-hook-form';
 import { Icon } from 'react-materialize';
 import styles from './Passwordnput.module.scss';
 
@@ -9,7 +9,7 @@ interface PasswordInputProps extends InputHTMLAttributes<HTMLInputElement>{
   errors?: {
     [x: string]: any;
   };
-  register?: UseFormRegister<FieldValues>;
+  register?: UseFormRegister<any>;
   icon?: string
 }
 
