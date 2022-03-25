@@ -9,7 +9,7 @@ export const Header: NextPage = () => {
   const { t } = useTranslation();
 
   return (
-    <div className={styles.container}>
+    <div className={`navbar-fixed ${styles.container}`}>
       <Navbar
         alignLinks="right"
         brand={(
