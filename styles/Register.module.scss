@@ -13,25 +13,18 @@
 }
 
 .formButtons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
   margin-top: 3rem;
-
-  p {
-    color: var(--orange-900);
-  }
 
   button {
     background-color: var(--orange-500);
-    width: 48%;
+    width: 100%;
   }
 }
 
-.image {
+.lottie {
   display: none;
   width: 40%;
+  max-height: calc(100vh - 4.2rem);;
 }
 
 @media (min-width: 992px) {
@@ -43,7 +36,7 @@
     }
   }
 
-  .image {
+  .lottie {
     display: block;
   }
 }

@@ -1,5 +1,9 @@
 .container{
   max-height: 4.2rem;
+  
+  a{
+    cursor: pointer;
+  }
 
   nav{
     background-color: var(--white);
@@ -8,5 +12,6 @@
     .sidenav-trigger{
       color: #000;
     }
+
   }
 }

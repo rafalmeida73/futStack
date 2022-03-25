@@ -8,7 +8,7 @@
   --white: #ffff;
   --black: #000;
 
-  --gray-50: #e1e1e6;
+  --gray-50: #C4C4C4;
   --gray-300: #a8a8b3;
   --gray-800: #29292e;
   --gray-850: #1f2729;
@@ -52,7 +52,16 @@ a {
   text-decoration: none;
 }
 
+.errorLabel{
+  color: red;
+  font-size: 0.9rem;
+}
+
 // Materialize
+
+.btn:hover, .btn:focus{
+  background-color: var(--orange-900) !important;
+}
 
 nav  {
   .brand-logo{
@@ -60,6 +69,8 @@ nav  {
   
     color: var(--black) !important;
     font-family: "Playfair Display", sans-serif ;
+    
+    max-height: 3.8rem;
   }
 
   .sidenav-trigger{
@@ -74,7 +85,6 @@ nav  {
 .input-field input[type=text]:focus+label, .input-field input[type=password]:focus+label, .input-field textarea:focus+label, .input-field input[type=email]:focus+label {
   color: var(--orange-500) !important;
 }
-
 
 .input-field input[type=text]:focus, .input-field input[type=password]:focus, .input-field textarea:focus, .input-field input[type=email]:focus {
   border-bottom: 1px solid var(--orange-500) !important;
@@ -94,3 +104,14 @@ nav  {
 }
 
 
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {  }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {  }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {  }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {  }

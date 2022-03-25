@@ -11,7 +11,6 @@ export default class MyDocument extends Document {
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Tinos:wght@400;700&display=swap" rel="stylesheet" />
           <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-          <link rel="stylesheet" href="path/to/materialize.css" />
           <link rel="shortcut icon" href="/favicon.png" type="image/png" />
         </Head>
         <body>
