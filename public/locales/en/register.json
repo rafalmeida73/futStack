@@ -1,0 +1,9 @@
+{
+  "email": "Email",
+  "name": "Full name",
+  "telephone": "Telephone",
+  "birthDate": "Birth date",
+  "password": "Password",
+  "signIn": "Sign in",
+  "requiredField": "Required field"
+}

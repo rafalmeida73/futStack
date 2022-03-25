@@ -7,11 +7,11 @@ interface ValidateProps{
 
 export const schema = ({ t } : ValidateProps) => {
   const validation = yup.object({
-    email: yup.string().required(t('register.requiredField')).email(),
-    name: yup.string().required(t('register.requiredField')),
-    telephone: yup.string().required(t('register.requiredField')),
-    birthDdate: yup.string().required(t('register.requiredField')),
-    password: yup.string().required(t('register.requiredField')),
+    email: yup.string().required(t('requiredField')).email(),
+    name: yup.string().required(t('requiredField')),
+    telephone: yup.string().required(t('requiredField')),
+    birthDdate: yup.string().required(t('requiredField')),
+    password: yup.string().required(t('requiredField')),
   }).required();
 
   return validation;

@@ -1,11 +1,11 @@
 import { NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import styles from './Footer.module.scss';
 
 export const Footer: NextPage = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('footer');
 
   return (
     <footer className={`page-footer ${styles.container}`}>
@@ -16,9 +16,9 @@ export const Footer: NextPage = () => {
           </div>
           <div className="col l2  s12">
             <ul>
-              <li><Link href="/">{t('header.home')}</Link></li>
-              <li><Link href="/login">{t('header.login')}</Link></li>
-              <li><Link href="/register">{t('header.register')}</Link></li>
+              <li><Link href="/">{t('home')}</Link></li>
+              <li><Link href="/login">{t('signIn')}</Link></li>
+              <li><Link href="/register">{t('signUp')}</Link></li>
             </ul>
           </div>
           <div className={`col l1 s12 ${styles.image}`}>
@@ -26,7 +26,7 @@ export const Footer: NextPage = () => {
               src="/up.svg"
               width={50}
               height={50}
-              alt={t('footer.upImageAlt')}
+              alt={t('upImageAlt')}
             />
           </div>
         </div>

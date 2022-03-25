@@ -1,11 +1,14 @@
 import type { NextPage } from 'next';
 import Image from 'next/image';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import { Button } from 'react-materialize';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import styles from '../../styles/Home.module.scss';
 
+import { nextI18NextConfig } from '../../next-i18next.config';
+
 const Home: NextPage = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('home');
 
   return (
     <div className={styles.container}>
@@ -60,7 +63,7 @@ const Home: NextPage = () => {
             node="button"
             waves="light"
           >
-            Cadastrar
+            {t('signUp')}
           </Button>
         </div>
         <div className={`${styles.soccerImage} col s12 m6 l6`}>
@@ -75,5 +78,15 @@ const Home: NextPage = () => {
     </div>
   );
 };
+
+export const getStaticProps = async ({ locale } :{locale: string}) => ({
+  props: {
+    ...(await serverSideTranslations(
+      locale,
+      ['home', 'header', 'footer', 'login', 'register'],
+      nextI18NextConfig,
+    )),
+  },
+});
 
 export default Home;

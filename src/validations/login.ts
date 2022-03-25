@@ -7,8 +7,8 @@ interface ValidateProps{
 
 export const schema = ({ t } : ValidateProps) => {
   const validation = yup.object({
-    email: yup.string().required(t('login.requiredField')).email(),
-    password: yup.string().required(t('login.requiredField')),
+    email: yup.string().required(t('requiredField')).email(),
+    password: yup.string().required(t('requiredField')),
   }).required();
 
   return validation;
