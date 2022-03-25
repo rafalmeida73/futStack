@@ -1,6 +1,6 @@
 export const nextI18NextConfig = {
   i18n: {
-    defaultLocale: 'en',
+    defaultLocale: 'pt',
     locales: ['en', 'pt'],
   },
 };
