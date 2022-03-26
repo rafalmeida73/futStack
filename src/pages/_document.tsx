@@ -21,7 +21,7 @@ Qual a melhor forma de organizar sua pelada ? Grupos, ligações e e-mail ? Sabe
 
           {/* <!-- Open Graph / Facebook --> */}
           <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://metatags.io/" />
+          <meta property="og:url" content="https://fut-stack.vercel.app/" />
           <meta property="og:title" content="FutStack" />
           <meta
             property="og:description"
@@ -32,7 +32,7 @@ Qual a melhor forma de organizar sua pelada ? Grupos, ligações e e-mail ? Sabe
 
           {/* <!-- Twitter --> */}
           <meta property="twitter:card" content="summary_large_image" />
-          <meta property="twitter:url" content="https://metatags.io/" />
+          <meta property="twitter:url" content="https://fut-stack.vercel.app/" />
           <meta property="twitter:title" content="FutStack" />
           <meta
             property="twitter:description"
