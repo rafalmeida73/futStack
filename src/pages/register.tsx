@@ -5,6 +5,7 @@ import lottie from 'lottie-web';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Head from 'next/head';
 import styles from '../../styles/Register.module.scss';
 import animationData from '../../public/logo.json';
 import { PasswordInput } from '../components/PasswordInput';
@@ -31,7 +32,7 @@ const Register: NextPage = () => {
 
   const anime = useRef<HTMLDivElement>(null);
 
-  const onSubmit = (data:RegisterFormType) => { alert(data); };
+  const onSubmit = (data:RegisterFormType) => { console.log(data); };
 
   useEffect(() => {
     if (anime.current) {
@@ -49,6 +50,14 @@ const Register: NextPage = () => {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>
+          {t('title')}
+          {' '}
+          | FutStack
+        </title>
+      </Head>
+
       <form onSubmit={handleSubmit(onSubmit)}>
 
         <TextInput register={register} id="name" errors={errors} icon="account_circle" label={t('name')} />

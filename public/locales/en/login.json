@@ -4,5 +4,6 @@
   "forgotPassowrd": "Forgot your password?",
   "signIn": "Sign in",
   "imageAlt": "Orange circle with a soccer ball in the center",
-  "requiredField": "Required field"
+  "requiredField": "Required field",
+  "title": "Sign in"
 }

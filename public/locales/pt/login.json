@@ -4,5 +4,6 @@
   "forgotPassowrd": "Esqueceu sua senha?",
   "signIn": "Entrar",
   "imageAlt": "Circulo laranja com uma bola de futebol no centro",
-  "requiredField": "Campo obrigatório"
+  "requiredField": "Campo obrigatório",
+  "title": "Entrar"
 }
