@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'next-i18next';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Head from 'next/head';
 import styles from '../../styles/Login.module.scss';
 import { PasswordInput } from '../components/PasswordInput';
 import { TextInput } from '../components/TextInput';
@@ -28,6 +29,14 @@ const Login: NextPage = () => {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>
+          {t('title')}
+          {' '}
+          | FutStack
+        </title>
+      </Head>
+
       <form onSubmit={handleSubmit(onSubmit)}>
 
         <TextInput register={register} id="email" errors={errors} icon="account_circle" label={t('email')} />

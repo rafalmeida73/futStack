@@ -2,10 +2,18 @@ import { NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslation } from 'next-i18next';
+import { Button } from 'react-materialize';
 import styles from './Footer.module.scss';
 
 export const Footer: NextPage = () => {
   const { t } = useTranslation('footer');
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth', // for smoothly scrolling
+    });
+  };
 
   return (
     <footer className={`page-footer ${styles.container}`}>
@@ -22,12 +30,19 @@ export const Footer: NextPage = () => {
             </ul>
           </div>
           <div className={`col l1 s12 ${styles.image}`}>
-            <Image
-              src="/up.svg"
-              width={50}
-              height={50}
-              alt={t('upImageAlt')}
-            />
+            <Button
+              node="button"
+              tooltip={t('scrollToTop')}
+              waves="light"
+              onClick={scrollToTop}
+            >
+              <Image
+                src="/up.svg"
+                width={50}
+                height={50}
+                alt={t('upImageAlt')}
+              />
+            </Button>
           </div>
         </div>
       </div>

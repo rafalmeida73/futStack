@@ -5,5 +5,6 @@
   "birthDate": "Birth date",
   "password": "Password",
   "signIn": "Sign in",
-  "requiredField": "Required field"
+  "requiredField": "Required field",
+  "title": "Sign up"
 }

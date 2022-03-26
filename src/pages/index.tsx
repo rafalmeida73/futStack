@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import { Button } from 'react-materialize';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Head from 'next/head';
 import styles from '../../styles/Home.module.scss';
 
 import { nextI18NextConfig } from '../../next-i18next.config';
@@ -12,6 +13,13 @@ const Home: NextPage = () => {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>
+          {t('title')}
+          {' '}
+          | FutStack
+        </title>
+      </Head>
       <main>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Leo ornare tincidunt quis suscipit.</p>
 
