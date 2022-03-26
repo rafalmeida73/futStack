@@ -65,12 +65,16 @@ a {
 
 nav  {
   .brand-logo{
-    display: flex !important;
-  
-    color: var(--black) !important;
-    font-family: "Playfair Display", sans-serif ;
+    cursor: pointer;
+
+    a:first-of-type{
+      display: flex !important;
     
-    max-height: 3.8rem;
+      color: var(--black) !important;
+      font-family: "Playfair Display", sans-serif ;
+      
+      max-height: 3.8rem;
+    }
   }
 
   .sidenav-trigger{

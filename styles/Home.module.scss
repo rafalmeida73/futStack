@@ -1,4 +1,4 @@
-.container {
+.container { 
   main {
     height: calc(100vh - 4.2rem);
     width: 100%;
@@ -73,6 +73,7 @@
   button{
     margin: 3rem 0;
     background-color: var(--orange-500);
+    color: var(--black);
   }
 }
 

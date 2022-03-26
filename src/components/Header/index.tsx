@@ -13,19 +13,20 @@ const Header: NextPage = () => {
       <Navbar
         alignLinks="right"
         brand={(
-          <a title={t('home')}>
+          <div title={t('home')}>
             <Link href="/">
-              <Image
-                src="/logo.svg"
-                width={90}
-                height={60}
-                alt={t('logoImageAlt')}
-              />
+              <a>
+                <Image
+                  src="/logo.svg"
+                  width={90}
+                  height={60}
+                  alt={t('logoImageAlt')}
+                />
+                <p>FutStack</p>
+              </a>
             </Link>
-            <Link href="/">
-              <p>FutStack</p>
-            </Link>
-          </a>
+
+          </div>
         )}
         id="mobile-nav"
         menuIcon={<Icon>menu</Icon>}

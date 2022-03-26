@@ -29,6 +29,7 @@ const Home: NextPage = () => {
             width={659.62}
             height={631.44}
             alt={t('home.playerImageAlt')}
+            priority
           />
         </div>
       </main>
