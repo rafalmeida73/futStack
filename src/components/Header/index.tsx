@@ -3,6 +3,7 @@ import { Navbar, Icon } from 'react-materialize';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
+import Head from 'next/head';
 import styles from './Header.module.scss';
 
 const Header: NextPage = () => {
@@ -10,6 +11,24 @@ const Header: NextPage = () => {
 
   return (
     <div className={`navbar-fixed ${styles.container}`}>
+      <Head>
+        <meta
+          name="description"
+          content={t('content')}
+        />
+
+        {/* Open Graph / Facebook */}
+        <meta
+          property="og:description"
+          content={t('content')}
+        />
+
+        {/* Twitter */}
+        <meta
+          property="twitter:description"
+          content={t('content')}
+        />
+      </Head>
       <Navbar
         alignLinks="right"
         brand={(

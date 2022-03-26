@@ -58,6 +58,7 @@ const Login: NextPage = () => {
           width={800}
           height={418.86}
           alt={t('imageAlt')}
+          priority
         />
       </div>
 
