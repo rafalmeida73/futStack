@@ -1,5 +1,5 @@
 .container {
-  height: calc(100vh - 4.2rem);
+  height: calc(100vh - 4rem);
 
   display: flex;
   flex-direction: column;
@@ -18,7 +18,7 @@
 
 .lottie {
   width: 20%;
-  max-height: calc(100vh - 4.2rem);
+  max-height: calc(100vh - 4rem);
 }
 
 @media (min-width: 768px) {  
