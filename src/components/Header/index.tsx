@@ -28,6 +28,9 @@ const Header: NextPage = () => {
           property="twitter:description"
           content={t('content')}
         />
+
+        <meta name="description" content={t('content')} />
+
       </Head>
       <Navbar
         alignLinks="right"
