@@ -1,5 +1,5 @@
 .container {
-  height: calc(100vh - 4.2rem);
+  height: calc(100vh - 4rem);
   width: 100%;
   padding: 0 2rem;
 
@@ -25,7 +25,7 @@
 .lottie {
   display: none;
   width: 40%;
-  max-height: calc(100vh - 4.2rem);;
+  max-height: calc(100vh - 4rem);
 }
 
 @media (min-width: 992px) {
