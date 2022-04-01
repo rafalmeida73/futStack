@@ -112,7 +112,7 @@ const Games = ({ standings } : GamesProps) => {
   );
 };
 
-export async function getStaticProps({ locale } :{locale: string}) {
+export async function getInitialProps({ locale } :{locale: string}) {
   const { data } = await api.get('/standings');
 
   return {
