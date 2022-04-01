@@ -46,7 +46,7 @@ export const getStaticProps = async ({ locale } :{locale: string}) => ({
   props: {
     ...(await serverSideTranslations(
       locale,
-      ['home', 'header', 'footer', 'login', 'register', '404'],
+      ['header', 'footer', '404'],
       nextI18NextConfig,
     )),
   },

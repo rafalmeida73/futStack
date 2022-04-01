@@ -27,6 +27,7 @@ export const Footer: NextPage = () => {
               <li><Link href="/">{t('home')}</Link></li>
               <li><Link href="/login">{t('signIn')}</Link></li>
               <li><Link href="/register">{t('signUp')}</Link></li>
+              <li><Link href="/games">{t('games')}</Link></li>
             </ul>
           </div>
           <div className={`col l1 s12 ${styles.image}`}>

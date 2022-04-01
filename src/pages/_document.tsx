@@ -62,6 +62,10 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
           <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js" />
+          <script
+            type="module"
+            src="https://widgets.api-sports.io/football/1.1.8/widget.js"
+          />
         </body>
       </Html>
     );

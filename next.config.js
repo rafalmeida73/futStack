@@ -12,7 +12,10 @@ const nextConfig = {
     register: true,
     skipWaiting: true,
     disable: process.env.NODE_ENV !== 'production',
-  }
+  },
+  images: {
+    domains: ['media.api-sports.io'],
+  },
 }
 
 module.exports = withPWA(nextConfig)

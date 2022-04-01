@@ -8,7 +8,7 @@
   --white: #ffff;
   --black: #000;
 
-  --gray-50: #C4C4C4;
+  --gray-50: #e9ecef;
   --gray-300: #a8a8b3;
   --gray-800: #29292e;
   --gray-850: #1f2729;
@@ -55,6 +55,10 @@ a {
 .errorLabel{
   color: red;
   font-size: 0.9rem;
+}
+
+td, th{
+  padding: 0.4rem 5px !important;
 }
 
 // Materialize

@@ -63,6 +63,9 @@ const Header: NextPage = () => {
         <Link href="/">
           <a>{t('home')}</a>
         </Link>
+        <Link href="/games">
+          <a>{t('games')}</a>
+        </Link>
         <Link href="/login">
           <a>{t('signIn')}</a>
         </Link>
