@@ -3,7 +3,7 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
-import styles from '../../styles/Home.module.scss';
+import styles from '../../styles/Games.module.scss';
 
 import { nextI18NextConfig } from '../../next-i18next.config';
 import { Stadings } from '../util/types/stadings';

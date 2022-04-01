@@ -8,7 +8,7 @@ import styles from '../../styles/404.module.scss';
 import { nextI18NextConfig } from '../../next-i18next.config';
 import animationData from '../../public/404.json';
 
-const pages: NextPage = () => {
+const NotFound: NextPage = () => {
   const { t } = useTranslation('404');
 
   const anime = useRef<HTMLDivElement>(null);
@@ -52,4 +52,4 @@ export const getStaticProps = async ({ locale } :{locale: string}) => ({
   },
 });
 
-export default pages;
+export default NotFound;
