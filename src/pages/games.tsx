@@ -1,19 +1,20 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
-import Head from 'next/head';
 import { useTranslation } from 'next-i18next';
-import styles from '../../styles/Games.module.scss';
-import { nextI18NextConfig } from '../../next-i18next.config';
-import { api } from '../services/api';
-import { Stadings } from '../util/types/stadings';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Head from 'next/head';
+import { useEffect, useState } from 'react';
+import styles from '../../styles/Home.module.scss';
 
-interface NewsProps{
+import { nextI18NextConfig } from '../../next-i18next.config';
+import { Stadings } from '../util/types/stadings';
+import { api } from '../services/api';
+
+interface GamesProps{
   standings: Stadings
 }
 
-const Games = ({ standings } : NewsProps) => {
-  const { t } = useTranslation('games');
+const Games = ({ standings } : GamesProps) => {
+  const { t } = useTranslation('rank');
 
   const [data, setData] = useState(standings);
 
@@ -96,7 +97,7 @@ const Games = ({ standings } : NewsProps) => {
 
       {Object?.keys(standings)?.length > 0 && (
       <div className={`${styles.live} container`}>
-        <p>{t('games')}</p>
+        <p>{t('gamesAtTheMoment')}</p>
         <div
           id="wg-api-football-livescore"
           data-host="v3.football.api-sports.io"
@@ -118,7 +119,7 @@ export async function getStaticProps({ locale } :{locale: string}) {
     props: {
       ...(await serverSideTranslations(
         locale,
-        ['header', 'footer', 'games'],
+        ['header', 'footer', 'rank'],
         nextI18NextConfig,
       )),
       standings: data,
