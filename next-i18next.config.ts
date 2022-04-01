@@ -3,5 +3,4 @@ export const nextI18NextConfig = {
     defaultLocale: 'pt',
     locales: ['en', 'pt'],
   },
-  react: { useSuspense: false },
 };
