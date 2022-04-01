@@ -9,7 +9,7 @@ import { nextI18NextConfig } from '../../next-i18next.config';
 import animationData from '../../public/404.json';
 
 const NotFound: NextPage = () => {
-  const { t } = useTranslation('404');
+  const { t } = useTranslation('notFound');
 
   const anime = useRef<HTMLDivElement>(null);
 
@@ -46,7 +46,7 @@ export const getStaticProps = async ({ locale } :{locale: string}) => ({
   props: {
     ...(await serverSideTranslations(
       locale,
-      ['header', 'footer', '404'],
+      ['header', 'footer', 'notFound'],
       nextI18NextConfig,
     )),
   },
