@@ -7,7 +7,7 @@ const standings = async (req: NextApiRequest, res: NextApiResponse) => {
   const { league } = req.query;
 
   if (req.method === 'GET') {
-    const { data } = await axios.get<Stadings>(`https://v3.football.api-sports.io/standings?${league}=71&season=${year}`, {
+    const { data } = await axios.get<Stadings>(`https://v3.football.api-sports.io/standings?league=${league}&season=${year}`, {
       headers: {
         'x-rapidapi-host': 'v3.football.api-sports.io',
         'x-rapidapi-key': String(process.env.NEXT_PUBLIC_API_KEY_FOOTBALL),
