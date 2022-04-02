@@ -8,6 +8,7 @@ import { PasswordInput } from '../components/PasswordInput';
 import { TextInput } from '../components/TextInput';
 import { schema } from '../validations/login';
 
+
 interface LoginFormType{
     email: string;
     password: string;
@@ -23,6 +24,7 @@ const Login: NextPage = () => {
   const onSubmit = (data:LoginFormType) => { console.log(data); };
 
   return (
+    
     <div className={styles.container}>
       <Head>
         <title>
@@ -46,7 +48,10 @@ const Login: NextPage = () => {
           </button>
         </div>
       </form>
-
+      
+      <div>
+        
+      </div>
       <div className={styles.image}>
         <Image
           src="/goal.svg"
