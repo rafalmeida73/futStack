@@ -1,0 +1,33 @@
+.container {
+  height: calc(100vh - 4rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  main {
+    border: 1px solid var(--gray-50);
+
+    div:first-of-type {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      background-color: var(--gray-50);
+      padding: 0 1rem;
+
+      p {
+        margin-left: 1rem;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.live{
+  p{
+    margin-bottom:  5rem;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+}
