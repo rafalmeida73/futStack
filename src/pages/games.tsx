@@ -1,6 +1,9 @@
 import Image from 'next/image';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
+import {
+  Button, Divider, Dropdown, Icon,
+} from 'react-materialize';
 import styles from '../../styles/Games.module.scss';
 import { Stadings } from '../util/types/stadings';
 import { api } from '../services/api';
@@ -8,9 +11,9 @@ import { api } from '../services/api';
 const Games = () => {
   const [data, setData] = useState({} as Stadings);
 
-  const getStadings = async () => {
+  const getStadings = async (league :string) => {
     try {
-      const { data: standings } = await api.get<Stadings>('/standings');
+      const { data: standings } = await api.get<Stadings>(`/standings/${league}`);
       setData(standings);
     } catch (error) {
       // eslint-disable-next-line no-console
@@ -19,7 +22,7 @@ const Games = () => {
   };
 
   useEffect(() => {
-    getStadings();
+    getStadings('71');
   }, []);
 
   useEffect(() => {
@@ -49,17 +52,55 @@ const Games = () => {
           </title>
         </Head>
         <main className="container">
-          <div>
-            {data?.response?.[0]?.league?.flag && (
-            <Image
-              src={data?.response?.[0]?.league?.flag}
-              width={100}
-              height={100}
-              alt={data?.response?.[0]?.league?.country}
-              priority
-            />
-            )}
-            <p>{data?.response?.[0]?.league?.name}</p>
+          <div className={styles.tableHeader}>
+            <div>
+              {data?.response?.[0]?.league?.flag && (
+                <Image
+                  src={data?.response?.[0]?.league?.flag}
+                  width={100}
+                  height={100}
+                  alt={data?.response?.[0]?.league?.country}
+                  priority
+                />
+              )}
+              <p>{data?.response?.[0]?.league?.name}</p>
+              <Dropdown
+                id="Dropdown_8"
+                options={{
+                  alignment: 'left',
+                  autoTrigger: true,
+                  closeOnClick: true,
+                  constrainWidth: true,
+                  container: null,
+                  coverTrigger: true,
+                  hover: false,
+                  inDuration: 150,
+                  outDuration: 250,
+                }}
+                trigger={(
+                  <Button
+                    node="button"
+                    style={{
+                      marginRight: '5px',
+                    }}
+                    waves="light"
+                  >
+                    Alterar liga
+                    <Icon left>
+                      arrow_drop_down
+                    </Icon>
+                  </Button>
+                )}
+              >
+                <button type="button" onClick={() => getStadings('71')}>
+                  Campeonato brasileiro
+                </button>
+                <Divider />
+                <button type="button" onClick={() => getStadings('2')}>
+                  Liga dos Campeões da UEFA
+                </button>
+              </Dropdown>
+            </div>
           </div>
           <table className="striped">
             <thead>
@@ -98,16 +139,16 @@ const Games = () => {
       </div>
 
       {data && Object.keys(data).length > 0 && (
-      <div className={`${styles.live} container`}>
-        <div
-          id="wg-api-football-livescore"
-          data-host="v3.football.api-sports.io"
-          data-refresh="0"
-          data-key={process.env.NEXT_PUBLIC_API_KEY_FOOTBALL}
-          data-show-errors="false"
-          className="api_football_loader"
-        />
-      </div>
+        <div className={`${styles.live} container`}>
+          <div
+            id="wg-api-football-livescore"
+            data-host="v3.football.api-sports.io"
+            data-refresh="0"
+            data-key={process.env.NEXT_PUBLIC_API_KEY_FOOTBALL}
+            data-show-errors="false"
+            className="api_football_loader"
+          />
+        </div>
       )}
     </>
   );

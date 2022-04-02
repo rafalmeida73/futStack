@@ -1,10 +1,13 @@
 import axios from 'axios';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { Stadings } from '../../util/types/stadings';
+import { Stadings } from '../../../util/types/stadings';
 
 const standings = async (req: NextApiRequest, res: NextApiResponse) => {
+  const year = new Date().getFullYear();
+  const { league } = req.query;
+
   if (req.method === 'GET') {
-    const { data } = await axios.get<Stadings>('https://v3.football.api-sports.io/standings?league=71&season=2022', {
+    const { data } = await axios.get<Stadings>(`https://v3.football.api-sports.io/standings?${league}=71&season=${year}`, {
       headers: {
         'x-rapidapi-host': 'v3.football.api-sports.io',
         'x-rapidapi-key': String(process.env.NEXT_PUBLIC_API_KEY_FOOTBALL),
