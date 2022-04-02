@@ -1,9 +1,0 @@
-{
-  "email": "E-mail",
-  "name": "Nome completo",
-  "telephone": "Telefone",
-  "birthDate": "Data de nascimento",
-  "password": "Senha",
-  "signIn": "Entrar",
-  "requiredField": "Campo obrigatório"
-}

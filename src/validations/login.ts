@@ -1,14 +1,9 @@
-import { TFunction } from 'react-i18next';
 import * as yup from 'yup';
 
-interface ValidateProps{
-  t: TFunction<'translation', undefined>
-}
-
-export const schema = ({ t } : ValidateProps) => {
+export const schema = () => {
   const validation = yup.object({
-    email: yup.string().required(t('requiredField')).email(),
-    password: yup.string().required(t('requiredField')),
+    email: yup.string().required('Campo obrigatório').email(),
+    password: yup.string().required('Campo obrigatório'),
   }).required();
 
   return validation;

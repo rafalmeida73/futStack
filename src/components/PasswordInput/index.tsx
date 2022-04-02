@@ -23,7 +23,7 @@ export const PasswordInput = ({
       <div className="input-field col s6">
         <i className="material-icons prefix">{icon}</i>
         <input id={id} type={visible ? 'password' : 'text'} className="validate" {...register?.(id)} {...rest} />
-        <label htmlFor="icon_prefix">{label}</label>
+        <label htmlFor={id}>{label}</label>
         <button type="button" onClick={() => setVisible(!visible)}>
           {visible
             ? <Icon>visibility</Icon>

@@ -1,8 +1,8 @@
 .container {
-  height: calc(100vh - 4.2rem);
+  height: calc(100vh - 4rem);
   width: 100%;
   padding: 0 2rem;
-
+    
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,12 +20,13 @@
   margin-top: 3rem;
 
   p {
-    color: var(--orange-900);
+    color: var(--black-900);
   }
 
   button {
     background-color: var(--orange-500);
     width: 48%;
+    color: var(--black);
   }
 }
 

@@ -1,0 +1,30 @@
+.container {
+  height: calc(100vh - 4rem);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    color: var(--black);
+    font-family: "Playfair Display", "sans-serif";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+}
+
+.lottie {
+  width: 20%;
+  max-height: calc(100vh - 4rem);
+}
+
+@media (min-width: 768px) {  
+  .container{
+    p{
+      font-size: 2rem;
+    }
+  }
+}

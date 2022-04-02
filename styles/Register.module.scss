@@ -1,5 +1,5 @@
 .container {
-  height: calc(100vh - 4.2rem);
+  height: calc(100vh - 4rem);
   width: 100%;
   padding: 0 2rem;
 
@@ -18,13 +18,14 @@
   button {
     background-color: var(--orange-500);
     width: 100%;
+    color: var(--black);
   }
 }
 
 .lottie {
   display: none;
   width: 40%;
-  max-height: calc(100vh - 4.2rem);;
+  max-height: calc(100vh - 4rem);
 }
 
 @media (min-width: 992px) {
