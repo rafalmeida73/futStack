@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import {
-  Button, Divider, Dropdown, Icon,
+  Button, Dropdown, Icon,
 } from 'react-materialize';
 import styles from '../../styles/Games.module.scss';
 import { Stadings } from '../util/types/stadings';
@@ -95,7 +95,6 @@ const Games = () => {
                 <button type="button" onClick={() => getStadings('71')}>
                   Campeonato brasileiro
                 </button>
-                <Divider />
                 <button type="button" onClick={() => getStadings('2')}>
                   Liga dos Campeões da UEFA
                 </button>
