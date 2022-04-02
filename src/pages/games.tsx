@@ -99,7 +99,6 @@ const Games = () => {
 
       {data && Object.keys(data).length > 0 && (
       <div className={`${styles.live} container`}>
-        <p>Jogos acontecendo no momento</p>
         <div
           id="wg-api-football-livescore"
           data-host="v3.football.api-sports.io"
