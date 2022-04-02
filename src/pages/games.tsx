@@ -1,47 +1,49 @@
 import Image from 'next/image';
-import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import styles from '../../styles/Games.module.scss';
-
-import { nextI18NextConfig } from '../../next-i18next.config';
 import { Stadings } from '../util/types/stadings';
 import { api } from '../services/api';
 
-interface GamesProps{
-  standings: Stadings
-}
+const Games = () => {
+  const [data, setData] = useState({} as Stadings);
 
-const Games = ({ standings } : GamesProps) => {
-  const { t } = useTranslation('rank');
+  const getStadings = async () => {
+    try {
+      const { data: standings } = await api.get<Stadings>('/standings');
+      setData(standings);
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.log(error);
+    }
+  };
 
-  const [data, setData] = useState(standings);
+  useEffect(() => {
+    getStadings();
+  }, []);
 
   useEffect(() => {
     const dataObject = localStorage.getItem('standings');
 
-    if (Object?.keys(standings)?.length > 0 && standings?.response?.length > 0 && !dataObject) {
+    if (data && Object?.keys(data)?.length > 0 && data?.response?.length > 0 && !dataObject) {
       localStorage.setItem('standings', JSON.stringify(data));
     }
 
-    if (Object?.keys(standings)?.length > 0 && standings?.response?.length > 0 && dataObject && standings !== JSON.parse(dataObject)) {
+    if (data && Object?.keys(data)?.length > 0 && data?.response?.length > 0 && dataObject && data !== JSON.parse(dataObject)) {
       localStorage.setItem('standings', JSON.stringify(data));
     }
 
-    if (Object?.keys(standings)?.length === 0 && dataObject) {
+    if (data && Object?.keys(data)?.length === 0 && dataObject) {
       setData(JSON.parse(dataObject));
-    } else {
-      setData(standings);
     }
-  }, []);
+  }, [data]);
 
   return (
     <>
       <div className={styles.container}>
         <Head>
           <title>
-            {t('title')}
+            Jogos
             {' '}
             | FutStack
           </title>
@@ -95,9 +97,9 @@ const Games = ({ standings } : GamesProps) => {
         </main>
       </div>
 
-      {Object?.keys(standings)?.length > 0 && (
+      {data && Object.keys(data).length > 0 && (
       <div className={`${styles.live} container`}>
-        <p>{t('gamesAtTheMoment')}</p>
+        <p>Jogos acontecendo no momento</p>
         <div
           id="wg-api-football-livescore"
           data-host="v3.football.api-sports.io"
@@ -111,20 +113,5 @@ const Games = ({ standings } : GamesProps) => {
     </>
   );
 };
-
-export async function getInitialProps({ locale } :{locale: string}) {
-  const { data } = await api.get('/standings');
-
-  return {
-    props: {
-      ...(await serverSideTranslations(
-        locale,
-        ['header', 'footer', 'rank'],
-        nextI18NextConfig,
-      )),
-      standings: data,
-    },
-  };
-}
 
 export default Games;

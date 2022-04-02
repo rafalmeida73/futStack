@@ -12,20 +12,36 @@ export default class MyDocument extends Document {
           <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Tinos:wght@400;700&display=swap" rel="stylesheet" />
           <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" />
           <link rel="shortcut icon" href="/favicon.ico" type="image/ico" />
+          <meta
+            name="description"
+            content="Quer bater aquela bolinha semanal com os amigos, no clube, condominio ou no bairro? Qual a melhor forma de organizar sua pelada? Grupos, ligações e e-mail? Sabemos que a pelada não vive só de futebol, é preciso pagar os campos, organizar times, comprar bola e coletes além de bancar aquele churrasco da resenha para a galera. Se tiver estastisticas, VAR, narração ao vivo?"
+          />
 
           {/* <!-- Open Graph / Facebook --> */}
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://fut-stack.vercel.app/" />
           <meta property="og:title" content="FutStack" />
           <meta property="og:image" content="https://fut-stack.vercel.app/metaTags.png" />
+          <meta
+            property="og:description"
+            content="Quer bater aquela bolinha semanal com os amigos, no clube, condominio ou no bairro? Qual a melhor forma de organizar sua pelada? Grupos, ligações e e-mail? Sabemos que a pelada não vive só de futebol, é preciso pagar os campos, organizar times, comprar bola e coletes além de bancar aquele churrasco da resenha para a galera. Se tiver estastisticas, VAR, narração ao vivo?"
+          />
 
           {/* <!-- Twitter --> */}
           <meta property="twitter:card" content="summary_large_image" />
           <meta property="twitter:url" content="https://fut-stack.vercel.app/" />
           <meta property="twitter:title" content="FutStack" />
           <meta property="twitter:image" content="https://fut-stack.vercel.app/metaTags.png" />
+          <meta
+            property="twitter:description"
+            content="Quer bater aquela bolinha semanal com os amigos, no clube, condominio ou no bairro? Qual a melhor forma de organizar sua pelada? Grupos, ligações e e-mail? Sabemos que a pelada não vive só de futebol, é preciso pagar os campos, organizar times, comprar bola e coletes além de bancar aquele churrasco da resenha para a galera. Se tiver estastisticas, VAR, narração ao vivo?"
+          />
 
           <meta name="application-name" content="FutStack" />
+          <meta
+            name="description"
+            content="Quer bater aquela bolinha semanal com os amigos, no clube, condominio ou no bairro? Qual a melhor forma de organizar sua pelada? Grupos, ligações e e-mail? Sabemos que a pelada não vive só de futebol, é preciso pagar os campos, organizar times, comprar bola e coletes além de bancar aquele churrasco da resenha para a galera. Se tiver estastisticas, VAR, narração ao vivo?"
+          />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-status-bar-style" content="default" />
           <meta name="apple-mobile-web-app-title" content="FutStack" />

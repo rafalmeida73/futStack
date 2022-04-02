@@ -3,10 +3,6 @@ const withPWA = require("next-pwa");
 
 const nextConfig = {
   reactStrictMode: true,
-  i18n:{
-    locales: ["en", "pt"],
-    defaultLocale: "pt"
-  },
   pwa: {
     dest: "public",
     register: true,
@@ -15,7 +11,7 @@ const nextConfig = {
   },
   images: {
     domains: ['media.api-sports.io'],
-  },
+  }
 }
 
 module.exports = withPWA(nextConfig)
