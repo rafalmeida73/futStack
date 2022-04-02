@@ -10,6 +10,7 @@ import { TextInput } from '../components/TextInput';
 import { schema } from '../validations/login';
 import { nextI18NextConfig } from '../../next-i18next.config';
 
+
 interface LoginFormType{
     email: string;
     password: string;
@@ -27,6 +28,7 @@ const Login: NextPage = () => {
   const onSubmit = (data:LoginFormType) => { console.log(data); };
 
   return (
+    
     <div className={styles.container}>
       <form onSubmit={handleSubmit(onSubmit)}>
 
@@ -42,7 +44,10 @@ const Login: NextPage = () => {
           </button>
         </div>
       </form>
-
+      
+      <div>
+        
+      </div>
       <div className={styles.image}>
         <Image
           src="/goal.svg"
