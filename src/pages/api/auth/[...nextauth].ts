@@ -3,13 +3,11 @@ import Credentials from 'next-auth/providers/credentials';
 import { connect } from '../../../../utils/database';
 
 export default NextAuth({
-  // Configure JWT
-  session: {
-    jwt: true,
-  },
-  // Specify Provider
   providers: [
     Credentials({
+      credentials: {
+        email: { type: 'text' },
+      },
       async authorize(credentials) {
         // Connect to DB
         const { db } = await connect();
@@ -18,12 +16,11 @@ export default NextAuth({
         const users = await db.collection('users');
         // Find user with the email
         const result = await users.findOne({
-          email: credentials.email,
+          email: credentials?.email,
         });
 
         // Not found - send error res
         if (!result) {
-          db.close();
           throw new Error('No user found with the email');
         }
 

@@ -36,8 +36,10 @@ const Register: NextPage = () => {
         telefone: dataForm?.telephone,
         nascimento: dataForm?.birthDdate,
       });
+      // eslint-disable-next-line no-alert
       alert('foi!!!!!!!!');
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log(error);
     }
   };
