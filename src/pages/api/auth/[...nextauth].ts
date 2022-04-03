@@ -26,6 +26,8 @@ export default NextAuth({
 
         return { email: result.email };
       },
+
     }),
   ],
+  secret: process.env.NEXT_PUBLIC_JWT_SECRET,
 });
