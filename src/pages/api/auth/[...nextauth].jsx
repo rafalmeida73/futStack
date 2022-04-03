@@ -1,17 +1,34 @@
-import NextAuth from "next";
-import Auth0Provioder from "next-auth/providers/auth0";
+import NextAuth from 'next-auth';
+import Credentials from 'next-auth/providers/credentials';
+import { connect } from '../../../../utils/database';
 
-const options = {
+export default NextAuth({
+  // Configure JWT
+  session: {
+    jwt: true,
+  },
+  // Specify Provider
   providers: [
-    Auth0Provider({
-      clientId: '6ACtQktajUydnzxHKEmCblmKunrQGKul',
-      clientSecret: 'wnwlr196JRButygXGIdW4OnY-PG5R5TrzpCgLmgFG3Ct3HM5_CZruffCyAXZxGj5',
-      domain: 'dev-rfnr7fci.us.auth0.com'
+    Credentials({
+      async authorize(credentials) {
+        // Connect to DB
+        const { db } = await connect();
 
+        // Get all the users
+        const users = await db.collection('users');
+        // Find user with the email
+        const result = await users.findOne({
+          email: credentials.email,
+        });
+
+        // Not found - send error res
+        if (!result) {
+          db.close();
+          throw new Error('No user found with the email');
+        }
+
+        return { email: result.email };
+      },
     }),
   ],
-
-};
-
-export default (req, res) =>
-  NextAuth(req, res, options);
+});

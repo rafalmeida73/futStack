@@ -3,11 +3,15 @@ import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Head from 'next/head';
+import {
+  signIn,
+  signOut,
+  useSession,
+} from 'next-auth/react';
 import styles from '../../styles/Login.module.scss';
 import { PasswordInput } from '../components/PasswordInput';
 import { TextInput } from '../components/TextInput';
 import { schema } from '../validations/login';
-
 
 interface LoginFormType{
     email: string;
@@ -15,16 +19,22 @@ interface LoginFormType{
 }
 
 const Login: NextPage = () => {
+  const { data: session } = useSession();
+
   const {
     register, handleSubmit, formState: { errors },
   } = useForm<LoginFormType>({
     resolver: yupResolver(schema()),
   });
 
-  const onSubmit = (data:LoginFormType) => { console.log(data); };
+  const onSubmit = (data:LoginFormType) => {
+    signIn('credentials', {
+      email: data.email,
+    });
+  };
 
   return (
-    
+
     <div className={styles.container}>
       <Head>
         <title>
@@ -33,6 +43,16 @@ const Login: NextPage = () => {
           | FutStack
         </title>
       </Head>
+
+      {session ? (
+        <>
+          <h1>logado</h1>
+          <button type="button" onClick={() => signOut()}>sair</button>
+        </>
+
+      ) : (
+        <h1>nao logado</h1>
+      ) }
 
       <form onSubmit={handleSubmit(onSubmit)}>
 
@@ -48,10 +68,8 @@ const Login: NextPage = () => {
           </button>
         </div>
       </form>
-      
-      <div>
-        
-      </div>
+
+      <div />
       <div className={styles.image}>
         <Image
           src="/goal.svg"

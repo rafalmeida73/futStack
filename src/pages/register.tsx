@@ -9,6 +9,7 @@ import animationData from '../../public/logo.json';
 import { PasswordInput } from '../components/PasswordInput';
 import { schema } from '../validations/register';
 import { TextInput } from '../components/TextInput';
+import { apiBd } from '../services/apiBd';
 
 interface RegisterFormType{
   name: string,
@@ -27,7 +28,19 @@ const Register: NextPage = () => {
 
   const anime = useRef<HTMLDivElement>(null);
 
-  const onSubmit = (data:RegisterFormType) => { console.log(data); };
+  const onSubmit = async (dataForm:RegisterFormType) => {
+    try {
+      await apiBd.post('user', {
+        nome: dataForm?.name,
+        email: dataForm?.email,
+        telefone: dataForm?.telephone,
+        nascimento: dataForm?.birthDdate,
+      });
+      alert('foi!!!!!!!!');
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     if (anime.current) {

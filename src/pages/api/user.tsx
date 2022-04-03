@@ -1,5 +1,5 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import connect from './../../../utils/database'
+import { NextApiRequest, NextApiResponse } from 'next';
+import { connect } from '../../../utils/database';
 
 interface ErrorResponseType {
     message: string;
@@ -14,30 +14,27 @@ interface SucessResponseType {
 }
 
 export default async (
-    req: NextApiRequest,
-    res: NextApiResponse<ErrorResponseType | SucessResponseType> 
+  req: NextApiRequest,
+  res: NextApiResponse<ErrorResponseType | SucessResponseType>,
 ): Promise<void> => {
-   
-   
+  if (req.method === 'POST') {
+    const {
+      nome, email, telefone, nascimento,
+    } = req.body;
 
-    if(req.method=== 'POST'){
-        
-        const {nome, email, telefone, nascimento} = req.body;
-        
-        if(!nome || !email || !telefone || !nascimento ){
-            res.status(400).json({message:"falta preencher os campos!! "})
-            return;
-        }
-        const {db} = await connect();
-        const response = await db.collection('users').insertOne({
-         nome,
-         email,
-         telefone, 
-         nascimento
-        });  
+    if (!nome || !email || !telefone || !nascimento) {
+      res.status(400).json({ message: 'falta preencher os campos!! ' });
+      return;
     }
-    else {
-        res.status(400).json({message:" Erro mano!!"})
-    }
-    res.status(200).json({message: "inserção feita!"});
+    const { db } = await connect();
+    await db.collection('users').insertOne({
+      nome,
+      email,
+      telefone,
+      nascimento,
+    });
+  } else {
+    res.status(400).json({ message: ' Erro mano!!' });
+  }
+  res.status(200).json({ message: 'inserção feita!' });
 };
