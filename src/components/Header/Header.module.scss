@@ -8,12 +8,22 @@
     cursor: pointer;
   }
 
+  button{
+    background: none;
+    border: none;
+    color: var(--black);
+
+    &:hover{
+      background: none;
+    }
+  }
+
   nav{
     background-color: var(--white);
     color: var(--black);
 
     .sidenav-trigger{
-      color: #000;
+      color: var(--black);
     }
 
   }

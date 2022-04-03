@@ -5,7 +5,7 @@ import {
   Button, Divider, Dropdown, Icon,
 } from 'react-materialize';
 import styles from '../../styles/Games.module.scss';
-import { Stadings } from '../util/types/stadings';
+import { Stadings } from '../utils/types/stadings';
 import { api } from '../services/api';
 
 const Games = () => {

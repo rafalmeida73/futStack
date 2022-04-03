@@ -1,10 +1,13 @@
 import { NextPage } from 'next';
+import { useSession, signOut } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from 'react-materialize';
 import styles from './Footer.module.scss';
 
 export const Footer: NextPage = () => {
+  const { data } = useSession();
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -23,8 +26,20 @@ export const Footer: NextPage = () => {
             <ul>
               <li><Link href="/">Início</Link></li>
               <li><Link href="/games">Jogos</Link></li>
-              <li><Link href="/login">Login</Link></li>
-              <li><Link href="/register">Registrar</Link></li>
+              {data ? (
+                <li>
+                  <button type="button" onClick={() => signOut()}>
+                    <a>Sair</a>
+                  </button>
+                </li>
+              )
+                : (
+                  <>
+                    <li><Link href="/login">Login</Link></li>
+                    <li><Link href="/register">Registrar</Link></li>
+                  </>
+                )}
+
             </ul>
           </div>
           <div className={`col l1 s12 ${styles.image}`}>

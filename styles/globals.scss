@@ -14,18 +14,18 @@
   --gray-850: #1f2729;
   --gray-900: #121214;
 
-  --orange-900: #EC4A07;
-  --orange-500: #FF4B00;
+  --orange-900: #ec4a07;
+  --orange-500: #ff4b00;
 }
 
 @media (max-width: 1080px) {
-  html{
+  html {
     font-size: 93.75%;
   }
 }
 
 @media (max-width: 720px) {
-  html{
+  html {
     font-size: 87.5%;
   }
 }
@@ -52,33 +52,34 @@ a {
   text-decoration: none;
 }
 
-.errorLabel{
+.errorLabel {
   color: red;
   font-size: 0.9rem;
 }
 
-td, th{
+td,
+th {
   padding: 0.4rem 5px !important;
 }
 
 // Materialize
 
-.dropdown-trigger{
+.dropdown-trigger {
   background-color: var(--orange-500) !important;
-  width: 12rem ;
+  width: 12rem;
 }
 
-.dropdown-content{
-  li{
+.dropdown-content {
+  li {
     display: flex;
     justify-content: center;
     align-items: center;
 
-    a{
+    a {
       color: var(--black) !important;
     }
 
-    button{
+    button {
       width: 100%;
       height: 100% !important;
       background-color: transparent;
@@ -88,38 +89,60 @@ td, th{
   }
 }
 
-.btn:hover, .btn:focus{
+.btn:hover,
+.btn:focus {
   background-color: var(--orange-900) !important;
 }
 
-nav  {
-  .brand-logo{
+nav {
+  .brand-logo {
     cursor: pointer;
 
-    a:first-of-type{
+    a:first-of-type {
       display: flex !important;
-    
+
       color: var(--black) !important;
-      font-family: "Playfair Display", sans-serif ;
-      
+      font-family: "Playfair Display", sans-serif;
+
       max-height: 3.8rem;
     }
   }
 
-  .sidenav-trigger{
-    color: var(--black)
+  .sidenav-trigger {
+    color: var(--black);
   }
 
-  ul a{
-    color: var(--black) !important
+  ul a {
+    color: var(--black) !important;
+  }
+
+  li {
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1) !important;
+    }
+
+    button {
+      a {
+        font-family: "Playfair Display", sans-serif;
+        &:hover {
+          background: none !important;
+        }
+      }
+    }
   }
 }
 
-.input-field input[type=text]:focus+label, .input-field input[type=password]:focus+label, .input-field textarea:focus+label, .input-field input[type=email]:focus+label {
+.input-field input[type="text"]:focus + label,
+.input-field input[type="password"]:focus + label,
+.input-field textarea:focus + label,
+.input-field input[type="email"]:focus + label {
   color: var(--orange-500) !important;
 }
 
-.input-field input[type=text]:focus, .input-field input[type=password]:focus, .input-field textarea:focus, .input-field input[type=email]:focus {
+.input-field input[type="text"]:focus,
+.input-field input[type="password"]:focus,
+.input-field textarea:focus,
+.input-field input[type="email"]:focus {
   border-bottom: 1px solid var(--orange-500) !important;
   box-shadow: 0 1px 0 0 var(--orange-500) !important;
 }
@@ -132,19 +155,22 @@ nav  {
   background-color: var(--orange-500) !important;
 }
 
-.input-field label{
+.input-field label {
   color: var(--black) !important;
 }
 
-
 // Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {  }
+@media (min-width: 576px) {
+}
 
 // Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {  }
+@media (min-width: 768px) {
+}
 
 // Large devices (desktops, 992px and up)
-@media (min-width: 992px) {  }
+@media (min-width: 992px) {
+}
 
 // Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {  }
+@media (min-width: 1200px) {
+}

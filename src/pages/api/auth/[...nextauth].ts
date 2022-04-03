@@ -1,6 +1,6 @@
 import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
-import { connect } from '../../../../utils/database';
+import { connect } from '../../../utils/database';
 
 export default NextAuth({
   providers: [
@@ -26,7 +26,6 @@ export default NextAuth({
 
         return { email: result.email };
       },
-
     }),
   ],
   secret: process.env.NEXT_PUBLIC_JWT_SECRET,

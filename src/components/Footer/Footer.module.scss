@@ -12,6 +12,15 @@
     a {
       color: var(--white);
     }
+
+    button{
+      background: none;
+      border: none;
+  
+      &:hover{
+        background: none;
+      }
+    }
   }
 }
 
