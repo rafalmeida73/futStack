@@ -1,5 +1,5 @@
 import axios from 'axios';
 
 export const apiBd = axios.create({
-  baseURL: 'https://fut-stack.vercel.app/api',
+  baseURL: 'http://localhost:3000/api',
 });

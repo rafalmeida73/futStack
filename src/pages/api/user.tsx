@@ -22,8 +22,8 @@ export default async (
       nome, email, telefone, nascimento,
     } = req.body;
 
-    if (!nome || !email || !telefone || !nascimento) {
-      res.status(400).json({ message: 'falta preencher os campos!! ' });
+    if (!nome || !email) {
+      res.status(400).json({ message: 'Por favor, preencha os campo de nome e e-mail ' });
       return;
     }
     const { db } = await connect();
@@ -34,7 +34,7 @@ export default async (
       nascimento,
     });
   } else {
-    res.status(400).json({ message: ' Erro mano!!' });
+    res.status(400).json({ message: 'Ocorreu um erro ao cadastrar um novo usuário' });
   }
-  res.status(200).json({ message: 'inserção feita!' });
+  res.status(200).json({ message: 'Inserção feita com sucesso!' });
 };

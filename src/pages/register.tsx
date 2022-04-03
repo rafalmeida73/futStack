@@ -10,6 +10,7 @@ import { PasswordInput } from '../components/PasswordInput';
 import { schema } from '../validations/register';
 import { TextInput } from '../components/TextInput';
 import { apiBd } from '../services/apiBd';
+import GoogleButton from '../components/GoogleButton';
 
 interface RegisterFormType{
   name: string,
@@ -74,9 +75,9 @@ const Register: NextPage = () => {
 
         <TextInput register={register} id="email" errors={errors} icon="email" label="E-mail" />
 
-        <TextInput register={register} id="telephone" errors={errors} icon="call" label="Telefone" />
+        <TextInput register={register} id="telephone" errors={errors} icon="call" label="Telefone" isTelephone isDate maxLength={15} />
 
-        <TextInput register={register} id="birthDdate" errors={errors} icon="date_range" label="Data de Nascimento" />
+        <TextInput register={register} id="birthDdate" errors={errors} icon="date_range" label="Data de Nascimento" isDate maxLength={10} />
 
         <PasswordInput register={register} id="password" errors={errors} label="Senha" />
 
@@ -86,6 +87,8 @@ const Register: NextPage = () => {
             <i className="material-icons right">send</i>
           </button>
         </div>
+
+        <GoogleButton />
       </form>
 
       <div ref={anime} className={styles.lottie} />

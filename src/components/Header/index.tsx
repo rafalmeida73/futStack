@@ -45,7 +45,7 @@ const Header: NextPage = () => {
           <a>Jogos</a>
         </Link>
         {data && (
-          <button type="button" onClick={() => signOut()}>
+          <button type="button" onClick={() => signOut({ callbackUrl: '/login' })}>
             <a>Sair</a>
           </button>
         )}

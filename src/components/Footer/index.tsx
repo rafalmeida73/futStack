@@ -28,7 +28,7 @@ export const Footer: NextPage = () => {
               <li><Link href="/games">Jogos</Link></li>
               {data ? (
                 <li>
-                  <button type="button" onClick={() => signOut()}>
+                  <button type="button" onClick={() => signOut({ callbackUrl: '/login' })}>
                     <a>Sair</a>
                   </button>
                 </li>

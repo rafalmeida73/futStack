@@ -2,7 +2,7 @@
   height: calc(100vh - 4rem);
   width: 100%;
   padding: 0 2rem;
-    
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -35,10 +35,11 @@
   width: 40%;
 }
 
+
 @media (min-width: 992px) {
   .container {
     padding: 0 10rem;
-  
+
     form {
       width: 40%;
     }
