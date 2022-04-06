@@ -1,18 +1,28 @@
 import { NextPage } from 'next';
-import { useSession, signOut } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from 'react-materialize';
+import { signOut } from 'firebase/auth';
+import { useRouter } from 'next/router';
+import { useAuthContext } from '../../comtext/Auth';
+import { auth } from '../../firebase/firebaseConfig';
 import styles from './Footer.module.scss';
 
 export const Footer: NextPage = () => {
-  const { data } = useSession();
+  const { isLogged } = useAuthContext();
+  const router = useRouter();
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth', // for smoothly scrolling
     });
+  };
+
+  const handleSignOut = async () => {
+    await signOut(auth);
+
+    router.push('login');
   };
 
   return (
@@ -26,9 +36,9 @@ export const Footer: NextPage = () => {
             <ul>
               <li><Link href="/">Início</Link></li>
               <li><Link href="/games">Jogos</Link></li>
-              {data ? (
+              {isLogged ? (
                 <li>
-                  <button type="button" onClick={() => signOut({ callbackUrl: '/login' })}>
+                  <button type="button" onClick={handleSignOut}>
                     <a>Sair</a>
                   </button>
                 </li>

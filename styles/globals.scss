@@ -89,6 +89,11 @@ th {
   }
 }
 
+.spinner-layer{
+  padding: 5px !important;
+  border-color: var(--gray-50) !important;
+}
+
 .btn:hover,
 .btn:focus {
   background-color: var(--orange-900) !important;

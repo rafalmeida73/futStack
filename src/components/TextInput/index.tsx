@@ -1,6 +1,5 @@
 import React, { InputHTMLAttributes, useCallback } from 'react';
 import { UseFormRegister } from 'react-hook-form';
-import styles from './TextInput.module.scss';
 
 interface TextInputProps extends InputHTMLAttributes<HTMLInputElement>{
   icon: string;
@@ -41,7 +40,7 @@ export const TextInput = ({
   );
 
   return (
-    <div className={styles.container}>
+    <div>
       <div className="input-field col s6">
         <i className="material-icons prefix">{icon}</i>
         <input id={id} type={type} className="validate" {...register?.(id)} {...rest} onKeyUp={maskDate} />

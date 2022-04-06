@@ -3,17 +3,18 @@ import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Head from 'next/head';
-import {
-  signIn,
-} from 'next-auth/react';
 import { toast } from 'react-toastify';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { useRouter } from 'next/router';
+import { FirebaseError } from '@firebase/util';
 import styles from '../../styles/Login.module.scss';
 import { PasswordInput } from '../components/PasswordInput';
 import { TextInput } from '../components/TextInput';
 import { schema } from '../validations/login';
 import GoogleButton from '../components/GoogleButton';
-import { apiBd } from '../services/apiBd';
+import { auth } from '../firebase/firebaseConfig';
+import LoadingButton from '../components/LoadingButton';
 
 interface LoginFormType{
     email: string;
@@ -21,6 +22,10 @@ interface LoginFormType{
 }
 
 const Login: NextPage = () => {
+  const router = useRouter();
+
+  const [isloading, setIsLoading] = useState(false);
+
   const {
     register, handleSubmit, formState: { errors },
   } = useForm<LoginFormType>({
@@ -31,18 +36,33 @@ const Login: NextPage = () => {
   }, []);
 
   const onSubmit = async (data:LoginFormType) => {
+    setIsLoading(true);
+
+    const id = toast.loading('Carregando...');
+
     try {
-      await apiBd.post('login', {
-        email: data.email,
+      await signInWithEmailAndPassword(auth, data.email, data.password);
+
+      toast.update(id, {
+        render: 'Bem vindo ao FutStack! 🤪', type: 'success', isLoading: false, autoClose: 5000,
       });
 
-      signIn('credentials', {
-        callbackUrl: '/',
-        email: data.email,
-      });
-    } catch (error) {
+      router.push('/');
+    } catch (err) {
       // eslint-disable-next-line no-console
-      toast.error('Usuário não encontrado. Verifique seu e-mail e senha e tente novamente.');
+      console.log(err);
+
+      if ((err as FirebaseError).code === 'auth/wrong-password' || (err as FirebaseError).code === 'auth/user-not-found') {
+        toast.update(id, {
+          render: 'E-mail ou senha incorretos!', type: 'error', isLoading: false, autoClose: 5000,
+        });
+      } else {
+        toast.update(id, {
+          render: 'Ocorreu um erro ao fazer login. Por favor, tente mais tarde', type: 'error', isLoading: false, autoClose: 5000,
+        });
+      }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -65,10 +85,7 @@ const Login: NextPage = () => {
 
         <div className={styles.formButtons}>
           <p>Esqueceu sua senha?</p>
-          <button className="btn waves-effect waves-light" type="submit" name="action">
-            Entrar
-            <i className="material-icons right">send</i>
-          </button>
+          <LoadingButton type="submit" title="registrar" loading={isloading} />
         </div>
         <GoogleButton />
       </form>

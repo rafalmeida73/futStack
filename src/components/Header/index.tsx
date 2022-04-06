@@ -2,11 +2,21 @@ import { NextPage } from 'next';
 import { Navbar, Icon } from 'react-materialize';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useSession, signOut } from 'next-auth/react';
+import { signOut } from 'firebase/auth';
+import { useRouter } from 'next/router';
 import styles from './Header.module.scss';
+import { useAuthContext } from '../../comtext/Auth';
+import { auth } from '../../firebase/firebaseConfig';
 
 const Header: NextPage = () => {
-  const { data } = useSession();
+  const { isLogged } = useAuthContext();
+  const router = useRouter();
+
+  const handleSignOut = async () => {
+    await signOut(auth);
+
+    router.push('login');
+  };
 
   return (
     <div className={`navbar-fixed ${styles.container}`}>
@@ -44,17 +54,17 @@ const Header: NextPage = () => {
         <Link href="/games">
           <a>Jogos</a>
         </Link>
-        {data && (
-          <button type="button" onClick={() => signOut({ callbackUrl: '/login' })}>
+        {isLogged && (
+          <button type="button" onClick={handleSignOut}>
             <a>Sair</a>
           </button>
         )}
-        {!data && (
+        {!isLogged && (
         <Link href="/login">
           <a>Login</a>
         </Link>
         )}
-        {!data && (
+        {!isLogged && (
         <Link href="/register">
           <a>Registrar</a>
         </Link>
