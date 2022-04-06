@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Image from 'next/image';
-import { Button } from 'react-materialize';
 import Head from 'next/head';
+import Link from 'next/link';
 import styles from '../../styles/Home.module.scss';
 
 const Home: NextPage = () => (
@@ -61,12 +61,11 @@ const Home: NextPage = () => (
     <div className={`${styles.description} row container`}>
       <div className="col s12 m6 l6">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Leo ornare tincidunt quis suscipit.</p>
-        <Button
-          node="button"
-          waves="light"
+        <Link
+          href="/register"
         >
-          Cadastrar
-        </Button>
+          Registrar
+        </Link>
       </div>
       <div className={`${styles.soccerImage} col s12 m6 l6`}>
         <Image

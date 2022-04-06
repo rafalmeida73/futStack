@@ -1,4 +1,6 @@
-import React, { InputHTMLAttributes, useCallback } from 'react';
+import React, {
+  InputHTMLAttributes, useCallback,
+} from 'react';
 import { UseFormRegister } from 'react-hook-form';
 
 interface TextInputProps extends InputHTMLAttributes<HTMLInputElement>{
@@ -8,10 +10,10 @@ interface TextInputProps extends InputHTMLAttributes<HTMLInputElement>{
   errors?: {
     [x: string]: any;
   };
-  register?: UseFormRegister<any>
-  type?: string
-  isDate?: boolean
-  isTelephone?: boolean
+  register?: UseFormRegister<any>;
+  type?: string;
+  isDate?: boolean;
+  isTelephone?: boolean;
 }
 
 export const TextInput = ({

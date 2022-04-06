@@ -5,7 +5,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import Head from 'next/head';
 import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  signInWithEmailAndPassword, sendPasswordResetEmail, setPersistence, browserLocalPersistence,
+} from 'firebase/auth';
 import { useRouter } from 'next/router';
 import { FirebaseError } from '@firebase/util';
 import styles from '../../styles/Login.module.scss';
@@ -27,7 +29,7 @@ const Login: NextPage = () => {
   const [isloading, setIsLoading] = useState(false);
 
   const {
-    register, handleSubmit, formState: { errors },
+    register, handleSubmit, formState: { errors }, setFocus, getValues,
   } = useForm<LoginFormType>({
     resolver: yupResolver(schema()),
   });
@@ -35,12 +37,43 @@ const Login: NextPage = () => {
   useEffect(() => {
   }, []);
 
+  const forgotPassword = async () => {
+    if (getValues('email')) {
+      const id = toast.loading('Carregando...');
+
+      try {
+        await sendPasswordResetEmail(auth, getValues('email'));
+
+        toast.update(id, {
+          render: 'Por favor, verifique sua caixa e-mail', type: 'success', isLoading: false, autoClose: 5000,
+        });
+      } catch (err) {
+        // eslint-disable-next-line no-console
+        console.log(err);
+
+        if ((err as FirebaseError).code === 'auth/user-not-found') {
+          toast.update(id, {
+            render: 'E-mail não encontrado. Por favor, verifique o e-mail digitado e tente novamente', type: 'error', isLoading: false, autoClose: 5000,
+          });
+        } else {
+          toast.update(id, {
+            render: 'Ocorreu um erro ao resetar senha. Por favor, tente mais tarde', type: 'error', isLoading: false, autoClose: 5000,
+          });
+        }
+      }
+    } else {
+      toast.error('Por favor, digite um e-mail');
+      setFocus('email');
+    }
+  };
+
   const onSubmit = async (data:LoginFormType) => {
     setIsLoading(true);
 
     const id = toast.loading('Carregando...');
 
     try {
+      await setPersistence(auth, browserLocalPersistence);
       await signInWithEmailAndPassword(auth, data.email, data.password);
 
       toast.update(id, {
@@ -84,7 +117,7 @@ const Login: NextPage = () => {
         <PasswordInput label="Senha" register={register} id="password" errors={errors} />
 
         <div className={styles.formButtons}>
-          <p>Esqueceu sua senha?</p>
+          <button type="button" onClick={forgotPassword}>Esqueceu sua senha?</button>
           <LoadingButton type="submit" title="registrar" loading={isloading} />
         </div>
         <GoogleButton />

@@ -1,7 +1,9 @@
 import { NextPage } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import {
+  signInWithPopup, GoogleAuthProvider, setPersistence, browserLocalPersistence,
+} from 'firebase/auth';
 import {
   collection,
   doc,
@@ -24,6 +26,7 @@ const GoogleButton: NextPage = () => {
     const id = toast.loading('Carregando...');
 
     try {
+      await setPersistence(auth, browserLocalPersistence);
       const response = await signInWithPopup(auth, provider);
 
       GoogleAuthProvider.credentialFromResult(response);
