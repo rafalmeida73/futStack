@@ -14,10 +14,11 @@ interface TextInputProps extends InputHTMLAttributes<HTMLInputElement>{
   type?: string;
   isDate?: boolean;
   isTelephone?: boolean;
+  isEmail?: boolean
 }
 
 export const TextInput = ({
-  icon, id, label, errors, register, type = 'text', isDate, isTelephone, ...rest
+  icon, id, label, errors, register, type = 'text', isDate, isTelephone, isEmail, ...rest
 }:TextInputProps) => {
   const maskDate = useCallback(
     (e: React.FormEvent<HTMLInputElement>) => {
@@ -36,6 +37,10 @@ export const TextInput = ({
           .replace(/\D/g, '')
           .replace(/(\d{2})(\d)/, '($1) $2')
           .replace(/(\d{5})(\d{4})(\d)/, '$1-$2');
+      }
+
+      if (isEmail) {
+        e.currentTarget.value = e.currentTarget.value.trim();
       }
     },
     [],

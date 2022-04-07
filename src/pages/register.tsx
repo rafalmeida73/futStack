@@ -109,7 +109,7 @@ const Register: NextPage = () => {
 
         <TextInput register={register} id="name" errors={errors} icon="account_circle" label="Nome" />
 
-        <TextInput register={register} id="email" errors={errors} icon="email" label="E-mail" />
+        <TextInput register={register} id="email" errors={errors} icon="email" label="E-mail" isEmail />
 
         <TextInput register={register} id="telephone" errors={errors} icon="call" label="Telefone" isTelephone isDate maxLength={15} />
 

@@ -9,7 +9,7 @@ import { useAuthContext } from '../../comtext/Auth';
 import { auth } from '../../firebase/firebaseConfig';
 
 const Header: NextPage = () => {
-  const { isLogged } = useAuthContext();
+  const { uid } = useAuthContext();
   const router = useRouter();
 
   const handleSignOut = async () => {
@@ -54,17 +54,17 @@ const Header: NextPage = () => {
         <Link href="/games">
           <a>Jogos</a>
         </Link>
-        {isLogged && (
+        {uid && (
           <button type="button" onClick={handleSignOut}>
             <a>Sair</a>
           </button>
         )}
-        {!isLogged && (
+        {!uid && (
         <Link href="/login">
           <a>Login</a>
         </Link>
         )}
-        {!isLogged && (
+        {!uid && (
         <Link href="/register">
           <a>Registrar</a>
         </Link>

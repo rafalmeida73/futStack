@@ -1,31 +1,25 @@
 import React, {
   createContext, useContext, useEffect, useMemo, useState,
 } from 'react';
-import { onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged, User } from 'firebase/auth';
 import { auth } from '../firebase/firebaseConfig';
 
-type AuthContextType = {
-  isLogged: boolean;
-};
-
-const AuthContext = createContext({} as AuthContextType);
+const AuthContext = createContext({} as User);
 
 const AuthContextProvider: React.FC = ({ children }) => {
-  const [isLogged, setIsLogged] = useState(false);
+  const [user, setUser] = useState({} as User);
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setIsLogged(true);
+    onAuthStateChanged(auth, (userData) => {
+      if (userData) {
+        setUser(userData);
       } else {
-        setIsLogged(false);
+        setUser({} as User);
       }
     });
   }, [onAuthStateChanged]);
 
-  const value = useMemo(() => ({
-    isLogged,
-  }), [isLogged]);
+  const value = useMemo(() => (user), [user]);
 
   return (
     <AuthContext.Provider value={value}>
@@ -34,7 +28,7 @@ const AuthContextProvider: React.FC = ({ children }) => {
   );
 };
 
-const useAuthContext = (): AuthContextType => {
+const useAuthContext = (): User => {
   const context = useContext(AuthContext);
   if (context === undefined) {
     throw new Error('No context on AuthContext');

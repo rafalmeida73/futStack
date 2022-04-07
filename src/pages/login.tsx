@@ -62,7 +62,7 @@ const Login: NextPage = () => {
         }
       }
     } else {
-      toast.error('Por favor, digite um e-mail');
+      toast.warning('Por favor, digite um e-mail');
       setFocus('email');
     }
   };
@@ -112,13 +112,13 @@ const Login: NextPage = () => {
 
       <form onSubmit={handleSubmit(onSubmit)}>
 
-        <TextInput register={register} id="email" errors={errors} icon="account_circle" label="E-mail" />
+        <TextInput register={register} id="email" errors={errors} icon="account_circle" label="E-mail" isEmail />
 
         <PasswordInput label="Senha" register={register} id="password" errors={errors} />
 
         <div className={styles.formButtons}>
           <button type="button" onClick={forgotPassword}>Esqueceu sua senha?</button>
-          <LoadingButton type="submit" title="registrar" loading={isloading} />
+          <LoadingButton type="submit" title="Entrar" loading={isloading} />
         </div>
         <GoogleButton />
       </form>

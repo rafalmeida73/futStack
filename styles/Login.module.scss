@@ -23,9 +23,9 @@
     color: var(--black-900);
   }
 
-  button{
-    background: none;
-    border: none;
+  button[type="button"]{
+      background: none;
+      border: none;
   }
 }
 

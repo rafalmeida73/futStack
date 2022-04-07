@@ -9,7 +9,7 @@ import { auth } from '../../firebase/firebaseConfig';
 import styles from './Footer.module.scss';
 
 export const Footer: NextPage = () => {
-  const { isLogged } = useAuthContext();
+  const { uid } = useAuthContext();
   const router = useRouter();
 
   const scrollToTop = () => {
@@ -22,7 +22,7 @@ export const Footer: NextPage = () => {
   const handleSignOut = async () => {
     await signOut(auth);
 
-    router.push('login');
+    router.push('/login');
   };
 
   return (
@@ -36,7 +36,7 @@ export const Footer: NextPage = () => {
             <ul>
               <li><Link href="/">Início</Link></li>
               <li><Link href="/games">Jogos</Link></li>
-              {isLogged ? (
+              {uid ? (
                 <li>
                   <button type="button" onClick={handleSignOut}>
                     <a>Sair</a>
