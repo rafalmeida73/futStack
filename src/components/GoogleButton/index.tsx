@@ -36,14 +36,14 @@ const GoogleButton: NextPage = () => {
 
       if (!docSnap.exists()) {
         await setDoc(doc(usersCollectionRef, response?.user?.uid), {
-          name: response?.user?.displayName, telephone: response?.user?.phoneNumber, photoURL: response?.user?.photoURL,
+          telephone: response?.user?.phoneNumber,
         });
       }
 
       toast.update(id, {
         render: 'Bem vindo ao FutStack! 🤪', type: 'success', isLoading: false, autoClose: 5000,
       });
-      router.push('/');
+      router.push('/menu');
     } catch (error) {
       toast.update(id, {
         render: 'Ocorreu um erro ao tentar fazer login com o google. Por favor, tente novamente mais tarde', type: 'error', isLoading: false, autoClose: 5000,

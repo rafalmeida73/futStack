@@ -15,22 +15,15 @@ interface TextInputProps extends InputHTMLAttributes<HTMLInputElement>{
   isDate?: boolean;
   isTelephone?: boolean;
   isEmail?: boolean
+  defaultValue?: string
 }
 
 export const TextInput = ({
-  icon, id, label, errors, register, type = 'text', isDate, isTelephone, isEmail, ...rest
+  icon, id, label, errors, register, type = 'text', isDate, isTelephone, isEmail, defaultValue, ...rest
 }:TextInputProps) => {
   const maskDate = useCallback(
     (e: React.FormEvent<HTMLInputElement>) => {
       const { value } = e.currentTarget;
-
-      if (isDate) {
-        e.currentTarget.value = value
-          .replace(/\D/g, '')
-          .replace(/(\d{2})(\d)/, '$1/$2')
-          .replace(/(\d{2})(\d)/, '$1/$2')
-          .replace(/(\d{4})(\d)/, '$1');
-      }
 
       if (isTelephone) {
         e.currentTarget.value = value
@@ -50,8 +43,8 @@ export const TextInput = ({
     <div>
       <div className="input-field col s6">
         <i className="material-icons prefix">{icon}</i>
-        <input id={id} type={type} className="validate" {...register?.(id)} {...rest} onKeyUp={maskDate} />
-        <label htmlFor={id}>{label}</label>
+        <input id={id} type={type} className="validate" {...register?.(id)} {...rest} onKeyUp={maskDate} defaultValue={defaultValue} />
+        <label htmlFor={id} className={defaultValue ? 'active' : ''}>{label}</label>
       </div>
 
       {errors?.[id]?.message && (

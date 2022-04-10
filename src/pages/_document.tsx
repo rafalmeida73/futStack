@@ -14,7 +14,7 @@ export default class MyDocument extends Document {
           <link rel="shortcut icon" href="/favicon.ico" type="image/ico" />
           <meta
             name="description"
-            content="Quer bater aquela bolinha semanal com os amigos, no clube, condominio ou no bairro? Qual a melhor forma de organizar sua pelada? Grupos, ligações e e-mail? Sabemos que a pelada não vive só de futebol, é preciso pagar os campos, organizar times, comprar bola e coletes além de bancar aquele churrasco da resenha para a galera. Se tiver estastisticas, VAR, narração ao vivo?"
+            content="FUTSTACK é o aplicativo perfeito para organizar as peladas de Futebol que acontecem nos bairros, clube, condominio ou qualquer lugar sem propaganda, zero tóxico e 100% futebol! Fazemos um levantamento das informações do jogo com parceiros para ajudar na unificação dos dados. Tudo em conformidade com os seus interesses."
           />
 
           {/* <!-- Open Graph / Facebook --> */}
@@ -24,7 +24,7 @@ export default class MyDocument extends Document {
           <meta property="og:image" content="https://fut-stack.vercel.app/metaTags.png" />
           <meta
             property="og:description"
-            content="Quer bater aquela bolinha semanal com os amigos, no clube, condominio ou no bairro? Qual a melhor forma de organizar sua pelada? Grupos, ligações e e-mail? Sabemos que a pelada não vive só de futebol, é preciso pagar os campos, organizar times, comprar bola e coletes além de bancar aquele churrasco da resenha para a galera. Se tiver estastisticas, VAR, narração ao vivo?"
+            content="FUTSTACK é o aplicativo perfeito para organizar as peladas de Futebol que acontecem nos bairros, clube, condominio ou qualquer lugar sem propaganda, zero tóxico e 100% futebol! Fazemos um levantamento das informações do jogo com parceiros para ajudar na unificação dos dados. Tudo em conformidade com os seus interesses."
           />
 
           {/* <!-- Twitter --> */}
@@ -34,13 +34,13 @@ export default class MyDocument extends Document {
           <meta property="twitter:image" content="https://fut-stack.vercel.app/metaTags.png" />
           <meta
             property="twitter:description"
-            content="Quer bater aquela bolinha semanal com os amigos, no clube, condominio ou no bairro? Qual a melhor forma de organizar sua pelada? Grupos, ligações e e-mail? Sabemos que a pelada não vive só de futebol, é preciso pagar os campos, organizar times, comprar bola e coletes além de bancar aquele churrasco da resenha para a galera. Se tiver estastisticas, VAR, narração ao vivo?"
+            content="FUTSTACK é o aplicativo perfeito para organizar as peladas de Futebol que acontecem nos bairros, clube, condominio ou qualquer lugar sem propaganda, zero tóxico e 100% futebol! Fazemos um levantamento das informações do jogo com parceiros para ajudar na unificação dos dados. Tudo em conformidade com os seus interesses."
           />
 
           <meta name="application-name" content="FutStack" />
           <meta
             name="description"
-            content="Quer bater aquela bolinha semanal com os amigos, no clube, condominio ou no bairro? Qual a melhor forma de organizar sua pelada? Grupos, ligações e e-mail? Sabemos que a pelada não vive só de futebol, é preciso pagar os campos, organizar times, comprar bola e coletes além de bancar aquele churrasco da resenha para a galera. Se tiver estastisticas, VAR, narração ao vivo?"
+            content="FUTSTACK é o aplicativo perfeito para organizar as peladas de Futebol que acontecem nos bairros, clube, condominio ou qualquer lugar sem propaganda, zero tóxico e 100% futebol! Fazemos um levantamento das informações do jogo com parceiros para ajudar na unificação dos dados. Tudo em conformidade com os seus interesses."
           />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-status-bar-style" content="default" />

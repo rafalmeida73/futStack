@@ -11,8 +11,9 @@ import {
 } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { FirebaseError } from '@firebase/util';
+import { addDays } from 'date-fns';
 import styles from '../../styles/Register.module.scss';
 import animationData from '../../public/logo.json';
 import { PasswordInput } from '../components/PasswordInput';
@@ -52,16 +53,17 @@ const Register: NextPage = () => {
 
     try {
       const response = await createUserWithEmailAndPassword(auth, dataForm.email, dataForm.password);
+      await updateProfile(response.user, { displayName: dataForm.name });
 
       await setDoc(doc(usersCollectionRef, response?.user?.uid), {
-        name: dataForm.name, telephone: dataForm.telephone, birthDdate: dataForm.birthDdate,
+        telephone: dataForm.telephone, birthDdate: addDays(new Date(String(dataForm.birthDdate)), 1),
       });
 
       toast.update(id, {
         render: 'Bem vindo ao FutStack! 🤪', type: 'success', isLoading: false, autoClose: 5000,
       });
 
-      router.push('/');
+      router.push('/menu');
     } catch (err) {
       // eslint-disable-next-line no-console
       console.error(err);
@@ -73,7 +75,7 @@ const Register: NextPage = () => {
       }
       if ((err as FirebaseError).code === 'auth/weak-password') {
         toast.update(id, {
-          render: 'A senha fraca está fraca', type: 'error', isLoading: false, autoClose: 5000,
+          render: 'A senha escolhida é fraca', type: 'error', isLoading: false, autoClose: 5000,
         });
       }
     } finally {
@@ -113,7 +115,7 @@ const Register: NextPage = () => {
 
         <TextInput register={register} id="telephone" errors={errors} icon="call" label="Telefone" isTelephone isDate maxLength={15} />
 
-        <TextInput register={register} id="birthDdate" errors={errors} icon="date_range" label="Data de Nascimento" isDate maxLength={10} />
+        <TextInput register={register} id="birthDdate" errors={errors} icon="date_range" label="Data de Nascimento" isDate maxLength={10} type="date" />
 
         <PasswordInput register={register} id="password" errors={errors} label="Senha" />
 

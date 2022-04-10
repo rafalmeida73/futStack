@@ -80,14 +80,19 @@ const Login: NextPage = () => {
         render: 'Bem vindo ao FutStack! 🤪', type: 'success', isLoading: false, autoClose: 5000,
       });
 
-      router.push('/');
+      router.push('/menu');
     } catch (err) {
       // eslint-disable-next-line no-console
       console.log(err);
 
-      if ((err as FirebaseError).code === 'auth/wrong-password' || (err as FirebaseError).code === 'auth/user-not-found') {
+      if ((err as FirebaseError).code === 'auth/user-not-found') {
         toast.update(id, {
-          render: 'E-mail ou senha incorretos!', type: 'error', isLoading: false, autoClose: 5000,
+          render: 'Usuário não encontrado', type: 'error', isLoading: false, autoClose: 5000,
+        });
+      } else
+      if ((err as FirebaseError).code === 'auth/wrong-password') {
+        toast.update(id, {
+          render: 'E-mail ou senha incorretos', type: 'error', isLoading: false, autoClose: 5000,
         });
       } else {
         toast.update(id, {

@@ -10,7 +10,7 @@ const nextConfig = {
     disable: process.env.NODE_ENV !== 'production',
   },
   images: {
-    domains: ['media.api-sports.io'],
+    domains: ['media.api-sports.io', "lh3.googleusercontent.com", "firebasestorage.googleapis.com"],
   }
 }
 

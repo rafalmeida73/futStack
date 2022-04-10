@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Button } from 'react-materialize';
 import { signOut } from 'firebase/auth';
 import { useRouter } from 'next/router';
-import { useAuthContext } from '../../comtext/Auth';
+import { useAuthContext } from '../../context/Auth';
 import { auth } from '../../firebase/firebaseConfig';
 import styles from './Footer.module.scss';
 
@@ -34,17 +34,22 @@ export const Footer: NextPage = () => {
           </div>
           <div className="col l2  s12">
             <ul>
-              <li><Link href="/">Início</Link></li>
-              <li><Link href="/games">Jogos</Link></li>
+
               {uid ? (
-                <li>
-                  <button type="button" onClick={handleSignOut}>
-                    <a>Sair</a>
-                  </button>
-                </li>
+                <>
+                  <li><Link href="/menu">Início</Link></li>
+                  <li><Link href="/games">Jogos</Link></li>
+                  <li>
+                    <button type="button" onClick={handleSignOut}>
+                      <a>Sair</a>
+                    </button>
+                  </li>
+                </>
               )
                 : (
                   <>
+                    <li><Link href="/">Início</Link></li>
+                    <li><Link href="/games">Jogos</Link></li>
                     <li><Link href="/login">Login</Link></li>
                     <li><Link href="/register">Registrar</Link></li>
                   </>

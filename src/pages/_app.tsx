@@ -5,7 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import Header from '../components/Header';
 import { Footer } from '../components/Footer';
 import 'react-toastify/dist/ReactToastify.css';
-import AuthContextProvider from '../comtext/Auth';
+import AuthContextProvider from '../context/Auth';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

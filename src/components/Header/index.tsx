@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { signOut } from 'firebase/auth';
 import { useRouter } from 'next/router';
 import styles from './Header.module.scss';
-import { useAuthContext } from '../../comtext/Auth';
+import { useAuthContext } from '../../context/Auth';
 import { auth } from '../../firebase/firebaseConfig';
 
 const Header: NextPage = () => {
@@ -24,7 +24,7 @@ const Header: NextPage = () => {
         alignLinks="right"
         brand={(
           <div title="Início">
-            <Link href="/">
+            <Link href={uid ? '/menu' : '/'}>
               <a>
                 <Image
                   src="/logo.svg"
@@ -48,9 +48,10 @@ const Header: NextPage = () => {
           preventScrolling: true,
         }}
       >
-        <Link href="/">
+        <Link href={uid ? '/menu' : '/'}>
           <a>Início</a>
         </Link>
+
         <Link href="/games">
           <a>Jogos</a>
         </Link>

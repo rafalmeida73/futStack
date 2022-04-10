@@ -89,7 +89,7 @@ th {
   }
 }
 
-.spinner-layer{
+.spinner-layer {
   padding: 5px !important;
   border-color: var(--gray-50) !important;
 }
@@ -137,17 +137,17 @@ nav {
   }
 }
 
-.input-field input[type="text"]:focus + label,
-.input-field input[type="password"]:focus + label,
+.input-field input:focus + label,
+.input-field input:focus + label,
 .input-field textarea:focus + label,
-.input-field input[type="email"]:focus + label {
+.input-field input:focus + label {
   color: var(--orange-500) !important;
 }
 
-.input-field input[type="text"]:focus,
-.input-field input[type="password"]:focus,
+.input-field input:focus,
+.input-field input:focus,
 .input-field textarea:focus,
-.input-field input[type="email"]:focus {
+.input-field input:focus {
   border-bottom: 1px solid var(--orange-500) !important;
   box-shadow: 0 1px 0 0 var(--orange-500) !important;
 }
@@ -162,6 +162,27 @@ nav {
 
 .input-field label {
   color: var(--black) !important;
+}
+
+.collapsible {
+  li {
+    box-shadow: none !important;
+  }
+
+  div {
+    border: none !important;
+  }
+}
+
+.collapsible-header {
+  background: none !important;
+  border: none !important;
+}
+
+.collapsible-body{
+  a{
+    display: flex;
+  }
 }
 
 // Small devices (landscape phones, 576px and up)
