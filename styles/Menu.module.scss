@@ -1,5 +1,9 @@
+.container{
+  height: calc((100vh - 4rem));
+}
+
 .header {
-  height: calc((100vh - 4rem) / 4);
+  height: calc((100vh - 4rem) / 3);
   display: flex;
   justify-content: center;
   align-items: center;

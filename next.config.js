@@ -11,7 +11,8 @@ const nextConfig = {
   },
   images: {
     domains: ['media.api-sports.io', "lh3.googleusercontent.com", "firebasestorage.googleapis.com"],
-  }
+  },
+  excludeFile: (str) => /\*.{spec,test}.tsx/.test(str)
 }
 
 module.exports = withPWA(nextConfig)

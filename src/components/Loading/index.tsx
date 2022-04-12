@@ -1,11 +1,10 @@
 import { onAuthStateChanged } from 'firebase/auth';
-import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { auth } from '../../firebase/firebaseConfig';
 import styles from './Loading.module.scss';
 
-const Loading: NextPage = () => {
+const Loading = () => {
   const router = useRouter();
 
   useEffect(() => {

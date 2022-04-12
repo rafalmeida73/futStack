@@ -1,6 +1,6 @@
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { NextPage } from 'next';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { updateProfile, User } from 'firebase/auth';
@@ -48,16 +48,19 @@ const EditProfile: NextPage = () => {
     resolver: yupResolver(schema()),
   });
 
-  const getUserData = async () => {
-    const docRef = doc(db, 'users', uid);
-    const docSnap = await getDoc(docRef);
+  const getUserData = useCallback(
+    async () => {
+      const docRef = doc(db, 'users', uid);
+      const docSnap = await getDoc(docRef);
 
-    setUser((docSnap.data() as UserType));
-    setValue('name', String(displayName));
-    setValue('telephone', (docSnap.data() as UserType).telephone);
-    setValue('birthDdate', format((docSnap.data() as any)?.birthDdate?.toDate?.(), 'yyyy-MM-dd'));
-    setValue('email', String(email));
-  };
+      setUser((docSnap.data() as UserType));
+      setValue('name', String(displayName));
+      setValue('telephone', (docSnap.data() as UserType).telephone);
+      setValue('birthDdate', format((docSnap.data() as any)?.birthDdate?.toDate?.(), 'yyyy-MM-dd'));
+      setValue('email', String(email));
+    },
+    [displayName, email, setValue, uid],
+  );
 
   const onSubmit = async (data: UserType) => {
     const id = toast.loading('Carregando...');
@@ -123,7 +126,7 @@ const EditProfile: NextPage = () => {
 
   useEffect(() => {
     getUserData();
-  }, [uid]);
+  }, [getUserData, uid]);
 
   return (
     <div className={styles.container}>

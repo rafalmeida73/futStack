@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import Image from 'next/image';
 import Head from 'next/head';
 import Link from 'next/link';
+import { Icon } from 'react-materialize';
 import styles from '../../styles/Home.module.scss';
 
 const Home: NextPage = () => (
@@ -14,7 +15,7 @@ const Home: NextPage = () => (
       </title>
     </Head>
     <main>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Leo ornare tincidunt quis suscipit.</p>
+      <p>FutStack é o aplicativo perfeito para organizar as partidas de Futebol que acontecem nos bairros, no clube, no condomínio ou qualquer lugar!</p>
 
       <div className={styles.image}>
         <Image
@@ -37,14 +38,29 @@ const Home: NextPage = () => (
 
     <div className={`${styles.card} row container`}>
       <div className="col s12 m4 l4">
-        <div className={styles.cardContent}><p>beneficios</p></div>
+        <div className={styles.cardContent}>
+          <Icon large>
+            directions_run
+          </Icon>
+          <p>Gerenciamento dos seus jogos de uma forma rápida.</p>
+        </div>
       </div>
       <div className="col s12 m4 l4">
-        <div className={styles.cardContent}><p>beneficios</p></div>
+        <div className={styles.cardContent}>
+          <Icon large>
+            attach_money
+          </Icon>
+          <p>Gerencie o financeiro da sua partida de uma forma fácil.</p>
+        </div>
 
       </div>
       <div className="col s12 m4 l4">
-        <div className={styles.cardContent}><p>beneficios</p></div>
+        <div className={styles.cardContent}>
+          <Icon large>
+            timeline
+          </Icon>
+          <p>Veja as estatísticas da partidas e jogadores.</p>
+        </div>
 
       </div>
     </div>
@@ -60,7 +76,7 @@ const Home: NextPage = () => (
 
     <div className={`${styles.description} row container`}>
       <div className="col s12 m6 l6">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Leo ornare tincidunt quis suscipit.</p>
+        <p>Conheça o aplicativo ideal para gerenciar as partidas de futebol nos bairros, Clube, Condominio ou qualquer lugar sem propaganda, zero tóxico e 100% Futebol!</p>
         <Link
           href="/register"
         >

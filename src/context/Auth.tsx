@@ -17,7 +17,7 @@ const AuthContextProvider: React.FC = ({ children }) => {
         setUser({} as User);
       }
     });
-  }, [onAuthStateChanged]);
+  }, []);
 
   const value = useMemo(() => (user), [user]);
 

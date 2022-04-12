@@ -36,7 +36,7 @@ export const TextInput = ({
         e.currentTarget.value = e.currentTarget.value.trim();
       }
     },
-    [],
+    [isEmail, isTelephone],
   );
 
   return (

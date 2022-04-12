@@ -1,4 +1,4 @@
-.container { 
+.container {
   main {
     height: calc(100vh - 4rem);
     width: 100%;
@@ -19,7 +19,7 @@
       font-family: "Playfair Display", "sans-serif";
       font-style: normal;
       font-weight: 700;
-      font-size: 1.2rem;
+      font-size: 1rem;
     }
   }
 }
@@ -45,13 +45,31 @@
 }
 
 .cardContent {
-  background-color: var(--gray-50);
-  border-radius: 5px;
+  border-radius: 50px;
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  box-shadow:  20px 20px 60px #d9d9d9,
+               -20px -20px 60px #ffffff;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding:  0 3rem;
+
+  i{
+    color: var(--orange-500);
+  }
+
+  p{
+    margin-top: 1rem;
+    text-align: center;
+  }
 }
 
 .description {
   min-height: 50vh;
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,10 +85,11 @@
       font-weight: 700;
       font-size: 1.5rem;
       line-height: 36px;
+      text-align: center;
     }
   }
 
-  a{
+  a {
     margin: 3rem 0;
     background-color: var(--orange-500);
     color: var(--white);
@@ -86,12 +105,12 @@
     -webkit-tap-highlight-color: transparent;
     vertical-align: middle;
     z-index: 1;
-    transition: .3s ease-out;
+    transition: 0.3s ease-out;
 
     text-decoration: none;
     text-align: center;
-    letter-spacing: .5px;
-    transition: background-color .2s ease-out;
+    letter-spacing: 0.5px;
+    transition: background-color 0.2s ease-out;
     cursor: pointer;
     text-transform: uppercase;
 
@@ -115,6 +134,13 @@
     p {
       font-size: 2rem;
     }
+
+    main{
+      p {
+        font-size: 1.5rem;
+        width: 50%;
+      }
+    }
   }
 
   .card {
@@ -133,7 +159,16 @@
   .soccerImage {
     display: block;
   }
- 
+
+  .cardContent {
+    p{
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+  }
+
+
 }
 
 @media (min-width: 768px) {
@@ -157,11 +192,19 @@
       display: flex;
       flex-direction: column;
       padding: 2.5rem;
-  
+
       p {
         font-size: 1.5rem;
       }
     }
-  
+  }
+
+  .container{
+    main{
+      p {
+        font-size: 2rem;
+        width: 50%;
+      }
+    }
   }
 }

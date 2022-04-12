@@ -1,4 +1,3 @@
-import { NextPage } from 'next';
 import { Navbar, Icon } from 'react-materialize';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -8,7 +7,7 @@ import styles from './Header.module.scss';
 import { useAuthContext } from '../../context/Auth';
 import { auth } from '../../firebase/firebaseConfig';
 
-const Header: NextPage = () => {
+const Header = () => {
   const { uid } = useAuthContext();
   const router = useRouter();
 

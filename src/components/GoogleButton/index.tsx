@@ -1,4 +1,3 @@
-import { NextPage } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import {
@@ -15,7 +14,7 @@ import { FirebaseError } from '@firebase/util';
 import { auth, db } from '../../firebase/firebaseConfig';
 import styles from './GoogleButton.module.scss';
 
-const GoogleButton: NextPage = () => {
+const GoogleButton = () => {
   const usersCollectionRef = collection(db, 'users');
 
   const router = useRouter();

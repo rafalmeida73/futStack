@@ -1,4 +1,3 @@
-import { NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from 'react-materialize';
@@ -8,7 +7,7 @@ import { useAuthContext } from '../../context/Auth';
 import { auth } from '../../firebase/firebaseConfig';
 import styles from './Footer.module.scss';
 
-export const Footer: NextPage = () => {
+export const Footer = () => {
   const { uid } = useAuthContext();
   const router = useRouter();
 
