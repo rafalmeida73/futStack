@@ -14,7 +14,7 @@ export default class MyDocument extends Document {
           <link rel="shortcut icon" href="/favicon.ico" type="image/ico" />
           <meta
             name="description"
-            content="FUTSTACK é o aplicativo perfeito para organizar as peladas de Futebol que acontecem nos bairros, clube, condominio ou qualquer lugar sem propaganda, zero tóxico e 100% futebol! Fazemos um levantamento das informações do jogo com parceiros para ajudar na unificação dos dados. Tudo em conformidade com os seus interesses."
+            content="FUTSTACK é o aplicativo perfeito para organizar as peladas de Futebol que acontecem nos bairros, clube, condominio ou qualquer lugar, zero tóxico e 100% futebol! Fazemos um levantamento das informações do jogo com parceiros para ajudar na unificação dos dados. Tudo em conformidade com os seus interesses."
           />
 
           {/* <!-- Open Graph / Facebook --> */}
@@ -24,7 +24,7 @@ export default class MyDocument extends Document {
           <meta property="og:image" content="https://fut-stack.vercel.app/metaTags.png" />
           <meta
             property="og:description"
-            content="FUTSTACK é o aplicativo perfeito para organizar as peladas de Futebol que acontecem nos bairros, clube, condominio ou qualquer lugar sem propaganda, zero tóxico e 100% futebol! Fazemos um levantamento das informações do jogo com parceiros para ajudar na unificação dos dados. Tudo em conformidade com os seus interesses."
+            content="FUTSTACK é o aplicativo perfeito para organizar as peladas de Futebol que acontecem nos bairros, clube, condominio ou qualquer lugar, zero tóxico e 100% futebol! Fazemos um levantamento das informações do jogo com parceiros para ajudar na unificação dos dados. Tudo em conformidade com os seus interesses."
           />
 
           {/* <!-- Twitter --> */}
@@ -34,13 +34,13 @@ export default class MyDocument extends Document {
           <meta property="twitter:image" content="https://fut-stack.vercel.app/metaTags.png" />
           <meta
             property="twitter:description"
-            content="FUTSTACK é o aplicativo perfeito para organizar as peladas de Futebol que acontecem nos bairros, clube, condominio ou qualquer lugar sem propaganda, zero tóxico e 100% futebol! Fazemos um levantamento das informações do jogo com parceiros para ajudar na unificação dos dados. Tudo em conformidade com os seus interesses."
+            content="FUTSTACK é o aplicativo perfeito para organizar as peladas de Futebol que acontecem nos bairros, clube, condominio ou qualquer lugar, zero tóxico e 100% futebol! Fazemos um levantamento das informações do jogo com parceiros para ajudar na unificação dos dados. Tudo em conformidade com os seus interesses."
           />
 
           <meta name="application-name" content="FutStack" />
           <meta
             name="description"
-            content="FUTSTACK é o aplicativo perfeito para organizar as peladas de Futebol que acontecem nos bairros, clube, condominio ou qualquer lugar sem propaganda, zero tóxico e 100% futebol! Fazemos um levantamento das informações do jogo com parceiros para ajudar na unificação dos dados. Tudo em conformidade com os seus interesses."
+            content="FUTSTACK é o aplicativo perfeito para organizar as peladas de Futebol que acontecem nos bairros, clube, condominio ou qualquer lugar, zero tóxico e 100% futebol! Fazemos um levantamento das informações do jogo com parceiros para ajudar na unificação dos dados. Tudo em conformidade com os seus interesses."
           />
           <meta name="apple-mobile-web-app-capable" content="yes" />
           <meta name="apple-mobile-web-app-status-bar-style" content="default" />

@@ -76,7 +76,7 @@ const Home: NextPage = () => (
 
     <div className={`${styles.description} row container`}>
       <div className="col s12 m6 l6">
-        <p>Conheça o aplicativo ideal para gerenciar as partidas de futebol nos bairros, Clube, Condominio ou qualquer lugar sem propaganda, zero tóxico e 100% Futebol!</p>
+        <p>Conheça o aplicativo ideal para gerenciar as partidas de futebol nos bairros, Clube, Condominio ou qualquer, zero tóxico e 100% Futebol!</p>
         <Link
           href="/register"
         >
