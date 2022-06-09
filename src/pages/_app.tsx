@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app';
 import '../../styles/globals.scss';
 import 'materialize-css/dist/css/materialize.min.css';
+import 'react-phone-input-2/lib/style.css';
 import { ToastContainer } from 'react-toastify';
 import Header from '../components/Header';
 import { Footer } from '../components/Footer';

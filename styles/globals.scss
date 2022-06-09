@@ -14,8 +14,13 @@
   --gray-850: #1f2729;
   --gray-900: #121214;
 
+  --orange-1000: #ca4007;
   --orange-900: #ec4a07;
   --orange-500: #ff4b00;
+
+  --red-500: #f44336;
+
+  --green-500: #009688;
 }
 
 @media (max-width: 1080px) {
@@ -57,18 +62,24 @@ a {
   font-size: 0.9rem;
 }
 
+.errorColor {
+  color: var(--red-500);
+}
+
+.sucessColor {
+  color: var(--green-500);
+}
+
 td,
 th {
   padding: 0.4rem 5px !important;
 }
 
-// Materialize
-
-.dropdown-trigger {
-  background-color: var(--orange-500) !important;
-  width: 12rem;
+.disabled-link {
+  pointer-events: none;
 }
 
+// Materialize
 .dropdown-content {
   li {
     display: flex;
@@ -147,13 +158,26 @@ nav {
 .input-field input:focus,
 .input-field input:focus,
 .input-field textarea:focus,
-.input-field input:focus {
+.input-field input:focus,
+.react-tel-input input:focus {
   border-bottom: 1px solid var(--orange-500) !important;
   box-shadow: 0 1px 0 0 var(--orange-500) !important;
 }
 
 .input-field .prefix.active {
   color: var(--orange-500) !important;
+}
+
+.react-tel-input {
+  input {
+    width: calc(100% - 3rem) !important;
+    margin-left: 3rem !important;
+  }
+
+  .flag-dropdown {
+    background: none !important;
+    border: none !important;
+  }
 }
 
 .input-field .btn {
@@ -179,9 +203,45 @@ nav {
   border: none !important;
 }
 
-.collapsible-body{
-  a{
+.collapsible-body {
+  a {
     display: flex;
+  }
+}
+
+input[type="text"]:not(.browser-default).validate + label {
+  width: 85% !important;
+}
+
+.btn-floating {
+  background-color: var(--orange-500) !important;
+}
+
+.fixed-action-btn button {
+  background: none !important;
+  box-shadow: none !important;
+
+  &:hover {
+    background: none !important;
+    box-shadow: none !important;
+  }
+  &:focus {
+    background: none !important;
+    box-shadow: none !important;
+  }
+
+  i {
+    color: var(--white);
+  }
+}
+
+.select-wrapper{
+  ul{
+    li{
+      span{
+        color: var(--orange-500) ;
+      }
+    }
   }
 }
 

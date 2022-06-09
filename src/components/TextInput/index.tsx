@@ -41,7 +41,7 @@ export const TextInput = ({
 
   return (
     <div>
-      <div className="input-field col s6">
+      <div className="input-field">
         <i className="material-icons prefix">{icon}</i>
         <input id={id} type={type} className="validate" {...register?.(id)} {...rest} onKeyUp={maskDate} defaultValue={defaultValue} />
         <label htmlFor={id} className={defaultValue ? 'active' : ''}>{label}</label>

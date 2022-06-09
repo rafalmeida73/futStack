@@ -24,6 +24,7 @@ const Menu: NextPage = () => {
           | FutStack
         </title>
       </Head>
+
       <div className={`${styles.container} `}>
         <div className={`${styles.header} row`}>
           <div className="col s6 m6 l6">
@@ -48,18 +49,18 @@ const Menu: NextPage = () => {
         </div>
         <main className={styles.menu}>
           <div className="row container">
-            <div className="col s6 s6 l6">
+            {/* <div className="col s6 s6 l6">
               <MenuCard icon="attach_money" title="Financeiro" link="/menu" />
+            </div> */}
+            <div className="col s12 s12 l12">
+              <MenuCard icon="date_range" title="Check-in" link={`/checkIn/${uid}`} />
             </div>
-            <div className="col s6 s6 l6">
-              <MenuCard icon="date_range" title="Agendamentos" link="/menu" />
-            </div>
-            <div className="col s6 s6 l6">
+            {/* <div className="col s6 s6 l6">
               <MenuCard icon="directions_run" title="Partidas" link="/menu" />
             </div>
             <div className="col s6 s6 l6">
               <MenuCard icon="timeline" title="Estatísticas" link="/menu" />
-            </div>
+            </div> */}
 
           </div>
         </main>
