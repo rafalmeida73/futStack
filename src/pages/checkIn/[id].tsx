@@ -45,9 +45,9 @@ const checkIn: NextPage = () => {
   const id = `${router?.query?.id}`;
 
   const corfirmedPlayers = useMemo(() => players?.filter((player) => player?.confirmed)?.length, [players]);
-  const goalkeepers = useMemo(() => players?.filter((player) => player.position === 'Goleiro' && player.confirmed).length || 0, [players]);
-  const attackers = useMemo(() => players?.filter((player) => player.position === 'Atacante' && player.confirmed).length || 0, [players]);
-  const defenses = useMemo(() => players?.filter((player) => player.position === 'Defesa' && player.confirmed).length || 0, [players]);
+  const goalkeepers = useMemo(() => players?.filter((player) => player?.position === 'Goleiro' && player.confirmed)?.length || 0, [players]);
+  const attackers = useMemo(() => players?.filter((player) => player?.position === 'Atacante' && player.confirmed)?.length || 0, [players]);
+  const defenses = useMemo(() => players?.filter((player) => player?.position === 'Defesa' && player.confirmed)?.length || 0, [players]);
 
   const {
     register, handleSubmit, formState: { errors }, control, reset,
@@ -143,7 +143,19 @@ const checkIn: NextPage = () => {
 
   const handleSorteio = useCallback(
     () => {
-      if (goalkeepers && goalkeepers < 2) {
+      if (goalkeepers < 2) {
+        toast.info(`Confirme ou adicione mais ${2 - goalkeepers} Goleiro(s)`);
+        return;
+      }
+      if (attackers < 2) {
+        toast.info('adicione pelo menos 2 atacantes');
+        return;
+      }
+      if (defenses < 2) {
+        toast.info('adicione pelo menos 2 defensores');
+        return;
+      }
+      if (goalkeepers < 2) {
         toast.info(`Confirme ou adicione mais ${2 - goalkeepers} Goleiro(s)`);
         return;
       }
@@ -268,9 +280,9 @@ const checkIn: NextPage = () => {
               control={control}
               render={({ field }) => (
                 <div className="input-field col s12">
-                  <select defaultValue="default" {...field}>
-                    <option value="default" disabled>Escolha a posição</option>
-                    <option value="Goleiro" disabled={goalkeepers < 2}>Goleiro</option>
+                  <select defaultValue="" {...field}>
+                    <option value="" disabled>Escolha a posição</option>
+                    <option value="Goleiro">Goleiro</option>
                     <option value="Atacante">Atacante</option>
                     <option value="Defesa">Defesa</option>
                   </select>
