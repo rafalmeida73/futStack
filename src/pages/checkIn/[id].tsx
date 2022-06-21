@@ -148,11 +148,11 @@ const checkIn: NextPage = () => {
         return;
       }
       if (attackers < 2) {
-        toast.info('adicione pelo menos 2 atacantes');
+        toast.info('Adicione pelo menos 2 atacantes');
         return;
       }
       if (defenses < 2) {
-        toast.info('adicione pelo menos 2 defensores');
+        toast.info('Adicione pelo menos 2 defensores');
         return;
       }
       if (goalkeepers < 2) {
