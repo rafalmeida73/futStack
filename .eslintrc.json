@@ -41,6 +41,7 @@
       "import/extensions": "off",
       "import/prefer-default-export": "off",
       "react/require-default-props": "off",
+      "react/no-array-index-key": "off",
       "max-len": "off"
     },
     "ignorePatterns": ["src/tests/*"],

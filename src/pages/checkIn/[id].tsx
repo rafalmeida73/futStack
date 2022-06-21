@@ -45,6 +45,9 @@ const checkIn: NextPage = () => {
   const id = `${router?.query?.id}`;
 
   const corfirmedPlayers = useMemo(() => players?.filter((player) => player?.confirmed)?.length, [players]);
+  const goalkeepers = useMemo(() => players?.filter((player) => player.position === 'Goleiro' && player.confirmed).length || 0, [players]);
+  const attackers = useMemo(() => players?.filter((player) => player.position === 'Atacante' && player.confirmed).length || 0, [players]);
+  const defenses = useMemo(() => players?.filter((player) => player.position === 'Defesa' && player.confirmed).length || 0, [players]);
 
   const {
     register, handleSubmit, formState: { errors }, control, reset,
@@ -54,6 +57,11 @@ const checkIn: NextPage = () => {
 
   const onSubmit = handleSubmit(async (formData) => {
     const data = formData as CheckInFormType;
+
+    if (goalkeepers >= 2 && data?.position === 'Goleiro') {
+      toast.error('Não é possível adicionar mais de 2 goleiros confirmados');
+      return;
+    }
 
     setIsLoading(true);
 
@@ -73,6 +81,8 @@ const checkIn: NextPage = () => {
             confirmed: true,
           }],
         });
+
+        reset();
       }
 
       const checkInRef = doc(db, 'checkIn', id);
@@ -131,6 +141,25 @@ const checkIn: NextPage = () => {
     [id],
   );
 
+  const handleSorteio = useCallback(
+    () => {
+      if (goalkeepers && goalkeepers < 2) {
+        toast.info(`Confirme ou adicione mais ${2 - goalkeepers} Goleiro(s)`);
+        return;
+      }
+      if (defenses % 2 > 0) {
+        toast.info(`Confirme ou adicione mais ${defenses % 2} defensores(s)`);
+        return;
+      }
+      if (attackers % 2 > 0) {
+        toast.info(`Confirme ou adicione mais ${attackers % 2} atacante(s)`);
+        return;
+      }
+      router.push(`/sorteio/${uid}`);
+    },
+    [attackers, defenses, goalkeepers, router, uid],
+  );
+
   useEffect(() => {
     const elems = document.querySelectorAll('.modal');
     const selectElems = document.querySelectorAll('select');
@@ -171,8 +200,10 @@ const checkIn: NextPage = () => {
           </div>
           <div className={`col s4 ${styles.confirmed}`}>
             <div>
-              <p>Confrimados</p>
-              <p>{corfirmedPlayers || 0}</p>
+              <p>Confirmados</p>
+              <p>
+                {corfirmedPlayers || 0}
+              </p>
             </div>
 
           </div>
@@ -229,7 +260,7 @@ const checkIn: NextPage = () => {
             <Controller
               name="telephone"
               control={control}
-              render={({ field }) => <PhoneInput {...field} country="br" />}
+              render={({ field }) => <PhoneInput {...field} country="br" defaultMask="+55" />}
             />
 
             <Controller
@@ -239,7 +270,7 @@ const checkIn: NextPage = () => {
                 <div className="input-field col s12">
                   <select defaultValue="default" {...field}>
                     <option value="default" disabled>Escolha a posição</option>
-                    <option value="Goleiro">Goleiro</option>
+                    <option value="Goleiro" disabled={goalkeepers < 2}>Goleiro</option>
                     <option value="Atacante">Atacante</option>
                     <option value="Defesa">Defesa</option>
                   </select>
@@ -278,17 +309,18 @@ const checkIn: NextPage = () => {
           </Icon>
         </Button>
         {uid === id && (
-          <Button
-            node="button"
-            waves="light"
-            className="btn-large"
-            data-target="modal1"
-          >
-            Sortear
-            <Icon right>
-              sort
-            </Icon>
-          </Button>
+        <Button
+          node="button"
+          waves="light"
+          className="btn-large"
+          data-target="modal1"
+          onClick={handleSorteio}
+        >
+          Sortear
+          <Icon right>
+            sort
+          </Icon>
+        </Button>
         )}
         {uid === id && (
         <Button

@@ -56,7 +56,9 @@ const EditProfile: NextPage = () => {
       setUser((docSnap.data() as UserType));
       setValue('name', String(displayName));
       setValue('telephone', (docSnap.data() as UserType).telephone);
-      setValue('birthDdate', format((docSnap.data() as any)?.birthDdate?.toDate?.(), 'yyyy-MM-dd'));
+      if ((docSnap.data() as any)?.birthDdate) {
+        setValue('birthDdate', format((docSnap.data() as any)?.birthDdate?.toDate?.(), 'yyyy-MM-dd'));
+      }
       setValue('email', String(email));
     },
     [displayName, email, setValue, uid],
