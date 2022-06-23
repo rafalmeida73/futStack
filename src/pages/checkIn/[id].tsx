@@ -81,6 +81,7 @@ const checkIn: NextPage = () => {
         const checkInnRef = collection(db, 'checkIn');
         await setDoc(doc(checkInnRef, id), {
           players: [{
+            id: players?.length || 0,
             name: data?.name,
             position,
             telephone: data?.telephone || null,
@@ -88,7 +89,7 @@ const checkIn: NextPage = () => {
           }],
         });
 
-        setValue('name', '');
+        setValue('name', undefined);
         reset();
       }
 
@@ -96,6 +97,7 @@ const checkIn: NextPage = () => {
 
       await updateDoc(checkInRef, {
         players: arrayUnion({
+          id: players?.length || 0,
           name: data?.name,
           position,
           telephone: data?.telephone || null,
@@ -103,7 +105,7 @@ const checkIn: NextPage = () => {
         }),
       });
 
-      setValue('name', '');
+      setValue('name', undefined);
       reset();
 
       const modal = document.getElementById('modal1') as HTMLElement;
