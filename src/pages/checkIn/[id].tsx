@@ -38,6 +38,7 @@ interface CheckInFormType {
 
 const checkIn: NextPage = () => {
   const [isloading, setIsLoading] = useState(false);
+  const [position, setPosition] = useState('');
   const [players, setPlayers] = useState<Array<CheckInFormType>>();
 
   const { uid } = useAuthContext();
@@ -50,13 +51,18 @@ const checkIn: NextPage = () => {
   const defenses = useMemo(() => players?.filter((player) => player?.position === 'Defesa' && player.confirmed)?.length || 0, [players]);
 
   const {
-    register, handleSubmit, formState: { errors }, control, reset,
+    register, handleSubmit, formState: { errors }, control, reset, setValue,
   } = useForm({
     resolver: yupResolver(schema()),
   });
 
   const onSubmit = handleSubmit(async (formData) => {
     const data = formData as CheckInFormType;
+
+    if (!position) {
+      toast.error('Adicione a posição do jogador');
+      return;
+    }
 
     if (goalkeepers >= 2 && data?.position === 'Goleiro') {
       toast.error('Não é possível adicionar mais de 2 goleiros confirmados');
@@ -76,12 +82,13 @@ const checkIn: NextPage = () => {
         await setDoc(doc(checkInnRef, id), {
           players: [{
             name: data?.name,
-            position: data?.position,
+            position,
             telephone: data?.telephone || null,
             confirmed: true,
           }],
         });
 
+        setValue('name', '');
         reset();
       }
 
@@ -90,12 +97,13 @@ const checkIn: NextPage = () => {
       await updateDoc(checkInRef, {
         players: arrayUnion({
           name: data?.name,
-          position: data?.position,
+          position,
           telephone: data?.telephone || null,
           confirmed: true,
         }),
       });
 
+      setValue('name', '');
       reset();
 
       const modal = document.getElementById('modal1') as HTMLElement;
@@ -275,23 +283,14 @@ const checkIn: NextPage = () => {
               render={({ field }) => <PhoneInput {...field} country="br" defaultMask="+55" />}
             />
 
-            <Controller
-              name="position"
-              control={control}
-              render={({ field }) => (
-                <div className="input-field col s12">
-                  <select defaultValue="" {...field}>
-                    <option value="" disabled>Escolha a posição</option>
-                    <option value="Goleiro">Goleiro</option>
-                    <option value="Atacante">Atacante</option>
-                    <option value="Defesa">Defesa</option>
-                  </select>
-                </div>
-              )}
-            />
-            <p className="errorLabel">
-              {errors?.position?.message}
-            </p>
+            <div className="input-field col s12">
+              <select defaultValue="" onChange={(e) => setPosition(e.target.value)}>
+                <option value="" disabled>Escolha a posição</option>
+                <option value="Goleiro">Goleiro</option>
+                <option value="Atacante">Atacante</option>
+                <option value="Defesa">Defesa</option>
+              </select>
+            </div>
 
             <LoadingButton type="submit" title="Adicionar" loading={isloading} />
             <a href="#!" className="modal-close waves-effect btn">Cancelar</a>
@@ -321,31 +320,31 @@ const checkIn: NextPage = () => {
           </Icon>
         </Button>
         {uid === id && (
-        <Button
-          node="button"
-          waves="light"
-          className="btn-large"
-          data-target="modal1"
-          onClick={handleSorteio}
-        >
-          Sortear
-          <Icon right>
-            sort
-          </Icon>
-        </Button>
+          <Button
+            node="button"
+            waves="light"
+            className="btn-large"
+            data-target="modal1"
+            onClick={handleSorteio}
+          >
+            Sortear
+            <Icon right>
+              sort
+            </Icon>
+          </Button>
         )}
         {uid === id && (
-        <Button
-          node="button"
-          waves="light"
-          className="btn-large modal-trigger"
-          onClick={() => handleDelete()}
-        >
-          Apagar tabela
-          <Icon right>
-            delete
-          </Icon>
-        </Button>
+          <Button
+            node="button"
+            waves="light"
+            className="btn-large modal-trigger"
+            onClick={() => handleDelete()}
+          >
+            Apagar tabela
+            <Icon right>
+              delete
+            </Icon>
+          </Button>
         )}
       </Button>
     </div>
