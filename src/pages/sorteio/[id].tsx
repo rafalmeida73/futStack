@@ -7,16 +7,25 @@ import {
   onSnapshot,
 } from 'firebase/firestore';
 import { useRouter } from 'next/router';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import styles from '../../../styles/sorteio.module.scss';
 
 import withAuth from '../../logic/withAuth';
 import { db } from '../../firebase/firebaseConfig';
+import { schema } from '../../validations/stopWatch';
+import { TextInput } from '../../components/TextInput';
+import LoadingButton from '../../components/LoadingButton';
 
 interface SorteioType {
   name: string;
   position: string;
   telephone: string;
   confirmed: boolean
+}
+
+interface SorteioFormType{
+  time: string;
 }
 
 const sorteio: NextPage = () => {
@@ -29,6 +38,16 @@ const sorteio: NextPage = () => {
   const goalkeepers = useMemo(() => players?.filter((player) => player.position === 'Goleiro' && player.confirmed).sort(() => Math.random() - 0.5), [players]);
   const attackers = useMemo(() => players?.filter((player) => player.position === 'Atacante' && player.confirmed).sort(() => Math.random() - 0.5), [players]);
   const defenses = useMemo(() => players?.filter((player) => player.position === 'Defesa' && player.confirmed).sort(() => Math.random() - 0.5), [players]);
+
+  const {
+    register, handleSubmit, formState: { errors },
+  } = useForm<SorteioFormType>({
+    resolver: yupResolver(schema()),
+  });
+
+  const onSubmit = async (data:SorteioFormType) => {
+    router.push(`/cronometro/${data.time}`);
+  };
 
   useEffect(() => {
     if (db && id) {
@@ -130,6 +149,15 @@ const sorteio: NextPage = () => {
         </section>
 
       </main>
+
+      <form onSubmit={handleSubmit(onSubmit)}>
+
+        <TextInput register={register} id="time" errors={errors} icon="looks_two" label="Quantos minutos?" type="number" />
+
+        <div className={styles.formButtons}>
+          <LoadingButton type="submit" title="Iniciar partida" />
+        </div>
+      </form>
 
     </div>
   );
