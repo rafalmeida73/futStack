@@ -1,6 +1,7 @@
-import { InputHTMLAttributes } from 'react';
+import React, {
+  InputHTMLAttributes, useCallback,
+} from 'react';
 import { UseFormRegister } from 'react-hook-form';
-import styles from './TextInput.module.scss';
 
 interface TextInputProps extends InputHTMLAttributes<HTMLInputElement>{
   icon: string;
@@ -9,24 +10,48 @@ interface TextInputProps extends InputHTMLAttributes<HTMLInputElement>{
   errors?: {
     [x: string]: any;
   };
-  register?: UseFormRegister<any>
-  type?: string
+  register?: UseFormRegister<any>;
+  type?: string;
+  isDate?: boolean;
+  isTelephone?: boolean;
+  isEmail?: boolean
+  defaultValue?: string
 }
 
 export const TextInput = ({
-  icon, id, label, errors, register, type = 'text', ...rest
-}:TextInputProps) => (
-  <div className={styles.container}>
-    <div className="input-field col s6">
-      <i className="material-icons prefix">{icon}</i>
-      <input id={id} type={type} className="validate" {...register?.(id)} {...rest} />
-      <label htmlFor={id}>{label}</label>
-    </div>
+  icon, id, label, errors, register, type = 'text', isDate, isTelephone, isEmail, defaultValue, ...rest
+}:TextInputProps) => {
+  const maskDate = useCallback(
+    (e: React.FormEvent<HTMLInputElement>) => {
+      const { value } = e.currentTarget;
 
-    {errors?.[id]?.message && (
+      if (isTelephone) {
+        e.currentTarget.value = value
+          .replace(/\D/g, '')
+          .replace(/(\d{2})(\d)/, '($1) $2')
+          .replace(/(\d{5})(\d{4})(\d)/, '$1-$2');
+      }
+
+      if (isEmail) {
+        e.currentTarget.value = e.currentTarget.value.trim();
+      }
+    },
+    [isEmail, isTelephone],
+  );
+
+  return (
+    <div>
+      <div className="input-field">
+        <i className="material-icons prefix">{icon}</i>
+        <input id={id} type={type} className="validate" {...register?.(id)} {...rest} onKeyUp={maskDate} defaultValue={defaultValue} />
+        <label htmlFor={id} className={defaultValue ? 'active' : ''}>{label}</label>
+      </div>
+
+      {errors?.[id]?.message && (
       <p className="errorLabel">
         {errors?.[id]?.message}
       </p>
-    )}
-  </div>
-);
+      )}
+    </div>
+  );
+};

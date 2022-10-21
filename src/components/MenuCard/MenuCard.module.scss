@@ -1,0 +1,29 @@
+.container {
+  cursor: pointer;
+  border-radius: 50px;
+  background: #ffffff;
+  box-shadow: 31px 31px 61px #d9d9d9, -31px -31px 61px #ffffff;
+  margin: 1rem 0;
+  min-height: calc((100vh - 4rem) / 4);
+
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  i {
+    color: var(--orange-500);
+  }
+
+  p {
+    font-weight: bold;
+    margin-top: 1rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    min-height: calc((100vh - 4rem) / 4);
+  }
+}

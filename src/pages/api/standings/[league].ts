@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { Stadings } from '../../../util/types/stadings';
+import { Stadings } from '../../../utils/types/stadings';
 
 const standings = async (req: NextApiRequest, res: NextApiResponse) => {
   const { league } = req.query;
