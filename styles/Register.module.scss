@@ -9,19 +9,12 @@
 
   form {
     width: 100%;
+
+    button[type="submit"]{
+      margin-top: 2rem;
+    }
   }
 }
-
-.formButtons {
-  margin-top: 3rem;
-
-  button {
-    background-color: var(--orange-500);
-    width: 100%;
-    color: var(--black);
-  }
-}
-
 .lottie {
   display: none;
   width: 40%;
@@ -31,7 +24,7 @@
 @media (min-width: 992px) {
   .container {
     padding: 0 10rem;
-  
+
     form {
       width: 40%;
     }
