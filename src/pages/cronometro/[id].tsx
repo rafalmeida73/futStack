@@ -46,10 +46,10 @@ const cronometro: NextPage = () => {
       </Head>
       <main>
         <div className={`${styles.content} row`}>
-          <div className="col s12 m6 l6">
+          <div className="col s12 m12 l6">
             <Timer expiryTimestamp={time} />
           </div>
-          <div className="col s12 m6 l6">
+          <div className="col s12 m12 l6">
             <div ref={anime} className={styles.lottie} />
           </div>
 
