@@ -24,7 +24,7 @@ const Timer = ({ expiryTimestamp }: TimerProps) => {
     resume,
   } = useTimer({
     expiryTimestamp,
-    autoStart: false,
+    autoStart: true,
     onExpire: () => {
       setExpire(true);
       toast.info('A partida acabou!');
