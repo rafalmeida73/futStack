@@ -39,7 +39,7 @@ const cronometro: NextPage = () => {
     <div className={`container ${styles.container}`}>
       <Head>
         <title>
-          Sorteio
+          Cronômetro
           {' '}
           | FutStack
         </title>
