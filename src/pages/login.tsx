@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import Head from 'next/head';
 import { toast } from 'react-toastify';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import {
   signInWithEmailAndPassword, sendPasswordResetEmail, setPersistence, browserLocalPersistence,
 } from 'firebase/auth';
@@ -33,9 +33,6 @@ const Login: NextPage = () => {
   } = useForm<LoginFormType>({
     resolver: yupResolver(schema()),
   });
-
-  useEffect(() => {
-  }, []);
 
   const forgotPassword = async () => {
     if (getValues('email')) {

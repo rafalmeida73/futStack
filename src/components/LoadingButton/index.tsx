@@ -5,7 +5,7 @@ import styles from './LoadingButton.module.scss';
 interface LoadingButtonProps extends ButtonHTMLAttributes<HTMLInputElement>{
   title: string;
   icon?: string;
-  loading: boolean
+  loading?: boolean
 }
 
 const LoadingButton = ({ loading, title, icon = 'send' }:LoadingButtonProps) => (

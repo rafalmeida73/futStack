@@ -33,7 +33,8 @@ interface CheckInFormType {
   name: string;
   position: string;
   telephone: string;
-  confirmed: boolean
+  confirmed: boolean;
+  payment: boolean
 }
 
 const checkIn: NextPage = () => {
@@ -86,6 +87,7 @@ const checkIn: NextPage = () => {
             position,
             telephone: data?.telephone || null,
             confirmed: true,
+            payment: false,
           }],
         });
 
@@ -134,6 +136,23 @@ const checkIn: NextPage = () => {
       const newPlayer = players?.map((player, playerIndex) => (index === playerIndex ? {
         ...player,
         confirmed: !player.confirmed,
+      }
+        : player));
+
+      await setDoc(doc(checkInnRef, id), {
+        players: newPlayer,
+      });
+    },
+    [players, id],
+  );
+
+  const handleUpdatePayment = useCallback(
+    async (index: number) => {
+      const checkInnRef = collection(db, 'checkIn');
+
+      const newPlayer = players?.map((player, playerIndex) => (index === playerIndex ? {
+        ...player,
+        payment: !player.payment,
       }
         : player));
 
@@ -242,6 +261,7 @@ const checkIn: NextPage = () => {
               </th>
               <th>Posição</th>
               <th>Confirmado</th>
+              <th>Pago</th>
             </tr>
           </thead>
 
@@ -263,6 +283,17 @@ const checkIn: NextPage = () => {
                   >
                     <Icon small className={player?.confirmed ? 'sucessColor' : 'errorColor'}>
                       {player?.confirmed ? 'check' : 'close'}
+                    </Icon>
+                  </button>
+
+                </td>
+                <td>
+                  <button
+                    type="button"
+                    onClick={() => handleUpdatePayment(index)}
+                  >
+                    <Icon small className={player?.payment ? 'sucessColor' : 'errorColor'}>
+                      {player?.payment ? 'check' : 'close'}
                     </Icon>
                   </button>
 

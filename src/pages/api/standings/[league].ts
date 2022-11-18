@@ -4,7 +4,7 @@ import { Stadings } from '../../../utils/types/stadings';
 
 const standings = async (req: NextApiRequest, res: NextApiResponse) => {
   const { league } = req.query;
-  const year = league === '71' ? new Date().getFullYear() : '2021';
+  const year = new Date().getFullYear();
 
   if (req.method === 'GET') {
     const { data } = await axios.get<Stadings>(`https://v3.football.api-sports.io/standings?league=${league}&season=${year}`, {
